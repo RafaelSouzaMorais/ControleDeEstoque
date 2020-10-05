@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D12F61B2-896F-46E8-BA83-61C5A57B4C4D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GUI</RootNamespace>
+    <AssemblyName>GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cadastro\FrmCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastro\FrmCategoria.Designer.cs">
+      <DependentUpon>FrmCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastro\FrmProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastro\FrmProduto.Designer.cs">
+      <DependentUpon>FrmProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastro\FrmSubCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastro\FrmSubCategoria.Designer.cs">
+      <DependentUpon>FrmSubCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastro\FrmUnidadeMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastro\FrmUnidadeMedida.Designer.cs">
+      <DependentUpon>FrmUnidadeMedida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\FrmModeloFormularioCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modelos\FrmModeloFormularioCadastro.Designer.cs">
+      <DependentUpon>FrmModeloFormularioCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\FrmModeloFormularioConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modelos\FrmModeloFormularioConsulta.Designer.cs">
+      <DependentUpon>FrmModeloFormularioConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Cadastro\FrmPopupConsultaCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\Cadastro\FrmPopupConsultaCategoria.Designer.cs">
+      <DependentUpon>FrmPopupConsultaCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Cadastro\FrmPopupConsultaSubCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\Cadastro\FrmPopupConsultaSubCategoria.Designer.cs">
+      <DependentUpon>FrmPopupConsultaSubCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Cadastro\FrmPopupConsultaUnidadeMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\Cadastro\FrmPopupConsultaUnidadeMedida.Designer.cs">
+      <DependentUpon>FrmPopupConsultaUnidadeMedida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cadastro\FrmCategoria.resx">
+      <DependentUpon>FrmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastro\FrmProduto.resx">
+      <DependentUpon>FrmProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastro\FrmSubCategoria.resx">
+      <DependentUpon>FrmSubCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastro\FrmUnidadeMedida.resx">
+      <DependentUpon>FrmUnidadeMedida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modelos\FrmModeloFormularioCadastro.resx">
+      <DependentUpon>FrmModeloFormularioCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modelos\FrmModeloFormularioConsulta.resx">
+      <DependentUpon>FrmModeloFormularioConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\Cadastro\FrmPopupConsultaCategoria.resx">
+      <DependentUpon>FrmPopupConsultaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\Cadastro\FrmPopupConsultaSubCategoria.resx">
+      <DependentUpon>FrmPopupConsultaSubCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\Cadastro\FrmPopupConsultaUnidadeMedida.resx">
+      <DependentUpon>FrmPopupConsultaUnidadeMedida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{3511F248-C396-407A-9F64-D393396F52FC}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{A1A0D1F6-9F37-4B7B-B53C-13920A13C9FA}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{E414C3E2-34EB-4B35-8931-0854AB8EEEA7}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{83b9214a-4fca-4643-8912-82e6947dcdfd}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-mais-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arquivo-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancelar-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-editar-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-excluir-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ok-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-pesquisar-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ficheiro-de-imagem-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\icons8-excluir-lixeira-64.png" />
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
