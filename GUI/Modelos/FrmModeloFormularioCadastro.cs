@@ -20,6 +20,7 @@ namespace GUI.Modelos
             InitializeComponent();
             utilitariosForms = new UtilitariosForms();
         }
+
         /// <summary>
         /// Realiza o controle dos botões
         /// </summary>
@@ -126,6 +127,12 @@ namespace GUI.Modelos
         public virtual void PosAlterar()
         {
 
+        }
+        public virtual void RegistrarCampoMonetario(TextBox tboxValor)
+        {
+            tboxValor.Enter += delegate (object sender, EventArgs e) { utilitariosForms.EnterCamposMonetarios(sender, e, tboxValor); };
+            tboxValor.KeyPress += delegate (object sender, KeyPressEventArgs e) { utilitariosForms.ControleCamposMonetarios(sender, e, tboxValor); };
+            tboxValor.Leave += delegate (object sender, EventArgs e) { utilitariosForms.ConsistenciaCamposMonetarios(sender, e, tboxValor); };
         }
     }
 }

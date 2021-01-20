@@ -4,3 +4,8 @@ C:\Users\PICHAU\source\repos\Controle de Estoque\Utils\obj\Debug\Utils.csprojAss
 C:\Users\PICHAU\source\repos\Controle de Estoque\Utils\obj\Debug\Utils.csproj.CoreCompileInputs.cache
 C:\Users\PICHAU\source\repos\Controle de Estoque\Utils\obj\Debug\Utils.dll
 C:\Users\PICHAU\source\repos\Controle de Estoque\Utils\obj\Debug\Utils.pdb
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\Utils\bin\Debug\Utils.dll
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\Utils\bin\Debug\Utils.pdb
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\Utils\obj\Debug\Utils.csproj.CoreCompileInputs.cache
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\Utils\obj\Debug\Utils.dll
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\Utils\obj\Debug\Utils.pdb

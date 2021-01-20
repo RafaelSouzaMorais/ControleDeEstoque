@@ -50,9 +50,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Modelo\Modelo.csproj">
+    <ProjectReference Include="..\Modelo\Model.csproj">
       <Project>{E414C3E2-34EB-4B35-8931-0854AB8EEEA7}</Project>
-      <Name>Modelo</Name>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

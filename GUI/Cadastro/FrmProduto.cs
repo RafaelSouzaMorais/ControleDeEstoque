@@ -24,18 +24,8 @@ namespace GUI.Cadastro
 
         private void FrmProduto_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void tboxValorPago_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            utilitariosForms.ControleCampoMonetarios(sender, e, tboxValorPago);
-
-        }
-
-        private void tboxValorVenda_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            utilitariosForms.ControleCampoMonetarios(sender, e, tboxValorVenda);
-        }
+            RegistrarCampoMonetario(tboxValorVenda);
+            RegistrarCampoMonetario(tboxValorPago);
+        } 
     }
 }

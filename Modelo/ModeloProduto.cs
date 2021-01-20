@@ -82,7 +82,7 @@ namespace Modelo
             {
                 if (string.IsNullOrEmpty(imgCaminho))
                     return;
-                //fornece propriedadese métodos de instância para criar, copiar,
+                //fornece propriedades e métodos de instância para criar, copiar,
                 //excluir, mover, e abrir arquivos, e ajuda na criação de objetos FileStream
                 FileInfo arqImagem = new FileInfo(imgCaminho);
                 //Expõe um Stream ao redor de um arquivo de suporte

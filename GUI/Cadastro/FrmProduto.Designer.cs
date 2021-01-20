@@ -345,7 +345,6 @@
             this.tboxValorPago.Name = "tboxValorPago";
             this.tboxValorPago.Size = new System.Drawing.Size(100, 31);
             this.tboxValorPago.TabIndex = 25;
-            this.tboxValorPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tboxValorPago_KeyPress);
             // 
             // tboxValorVenda
             // 
@@ -354,7 +353,6 @@
             this.tboxValorVenda.Name = "tboxValorVenda";
             this.tboxValorVenda.Size = new System.Drawing.Size(100, 31);
             this.tboxValorVenda.TabIndex = 26;
-            this.tboxValorVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tboxValorVenda_KeyPress);
             // 
             // tboxCodigoBarra
             // 

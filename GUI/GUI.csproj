@@ -171,9 +171,9 @@
       <Project>{A1A0D1F6-9F37-4B7B-B53C-13920A13C9FA}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Modelo\Modelo.csproj">
+    <ProjectReference Include="..\Modelo\Model.csproj">
       <Project>{E414C3E2-34EB-4B35-8931-0854AB8EEEA7}</Project>
-      <Name>Modelo</Name>
+      <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{83b9214a-4fca-4643-8912-82e6947dcdfd}</Project>
