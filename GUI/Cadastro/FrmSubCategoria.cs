@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static Utils.Enums;
 
 namespace GUI.Cadastro
 {
@@ -98,7 +99,7 @@ namespace GUI.Cadastro
                 modelo.ScatNome = Convert.ToString(tboxNomeSubCat.Text);
                 modelo.ScatCodCategoria = Convert.ToInt32(cboxCatCod.SelectedValue);
 
-                if (operacao.Equals("inserir"))
+                if (operacao.Equals(TipoOperacaoRegistro.Inserir))
                 {
                     BSubCategoria.Incluir(modelo);
                     MessageBox.Show("Inserção feita com sucesso!");

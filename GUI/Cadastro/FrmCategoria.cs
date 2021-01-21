@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static Utils.Enums;
 
 namespace GUI.Cadastro
 {
@@ -58,7 +59,7 @@ namespace GUI.Cadastro
                 ModeloCategoria modelo = new ModeloCategoria();
                 modelo.CatNome = Convert.ToString(tboxNome.Text);
 
-                if (operacao.Equals("inserir"))
+                if (operacao.Equals(TipoOperacaoRegistro.Inserir))
                 {
                     BCategoria.Incluir(modelo);
                     MessageBox.Show("Inserção feita com sucesso!");

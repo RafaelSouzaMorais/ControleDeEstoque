@@ -60,6 +60,12 @@ namespace Business
             return DALObj.RecuperarPorNome(valor);
         }
 
+        public object LocalizarPorCategoria(int valor)
+        {
+            DALSubCategoria DALObj = new DALSubCategoria(_conexao);
+            return DALObj.RecuperarPorCategoria(valor);
+        }
+
         public ModeloSubCategoria CarregaModeloSubCategoria(int codigo)
         {
             DALSubCategoria DALObj = new DALSubCategoria(_conexao);

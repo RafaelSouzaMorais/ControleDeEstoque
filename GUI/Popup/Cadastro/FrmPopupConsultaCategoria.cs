@@ -25,7 +25,7 @@ namespace GUI.Popup.Cadastro
             dgvDados.Columns[0].HeaderText = "Código";
             dgvDados.Columns[0].Width = 50;
             //dgvDados.Columns[0].Visible = false;
-            dgvDados.Columns[1].HeaderText = "Categoria";
+            dgvDados.Columns[1].HeaderText = "Produto";
             dgvDados.Columns[1].Width = 252;
         }
 

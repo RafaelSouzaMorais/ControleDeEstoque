@@ -24,14 +24,14 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = _conexao.ObjetoConexao;
                 cmd.CommandText = @"INSERT INTO pro_produto
-                                       (pro_nome
-                                       pro_descricao
-                                       pro_foto
-                                       pro_valor_pago
-                                       pro_valor_venda
-                                       pro_qtde
-                                       pro_cod_und_medida
-                                       pro_cod_categoria
+                                       (pro_nome,
+                                       pro_descricao,
+                                       pro_foto,
+                                       pro_valor_pago,
+                                       pro_valor_venda,
+                                       pro_qtde,
+                                       pro_cod_und_medida,
+                                       pro_cod_categoria,
                                        pro_cod_subcategoria)
                                  VALUES
                                        (@nome,
@@ -43,7 +43,7 @@ namespace DAL
 		                               @codigoUnidadeMedida,
 		                               @codigoCategoria,
 		                               @codigoSubCategoria)
-                                    GO; select @@IDENTITY;";
+                                   select @@IDENTITY;";
                 cmd.Parameters.AddWithValue("@nome", modelo.ProNome);
                 cmd.Parameters.AddWithValue("@descricao", modelo.ProDescricao);
                 cmd.Parameters.Add("@foto", SqlDbType.Image);

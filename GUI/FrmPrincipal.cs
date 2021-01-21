@@ -27,50 +27,57 @@ namespace GUI
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCategoria f = new FrmCategoria();
-            f.ShowDialog();
-            f.Dispose();
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void categoriaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmPopupConsultaCategoria f = new FrmPopupConsultaCategoria();
-            f.ShowDialog();
-            f.Dispose();
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void subCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmSubCategoria f = new FrmSubCategoria();
-            f.ShowDialog();
-            f.Dispose();
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void subCategoriaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmPopupConsultaSubCategoria f = new FrmPopupConsultaSubCategoria();
-            f.ShowDialog();
-            f.Dispose();
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void unidadeDeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmUnidadeMedida f = new FrmUnidadeMedida();
-            f.ShowDialog();
-            f.Dispose();
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void unidadeDeMedidaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmPopupConsultaUnidadeMedida f = new FrmPopupConsultaUnidadeMedida();
-            f.ShowDialog();
-            f.Dispose();
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmProduto f = new FrmProduto();
-            f.ShowDialog();
-            f.Dispose();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPopupConsultaProduto f = new FrmPopupConsultaProduto();
+            f.MdiParent = this;
+            f.Show();
         }
     }
 }

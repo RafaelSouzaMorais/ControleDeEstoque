@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modelo
+namespace Utils
 {
     public class Enums
     {
-        public enum TipoOperacao
+        public enum TipoOperacaoRegistro
         {
-            Inserir = 1,
-            Alterar = 2,
-            Excluir = 3
+            Inserir,
+            Alterar,
+            Excluir
         };
     }
 }

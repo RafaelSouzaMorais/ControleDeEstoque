@@ -20,11 +20,15 @@ namespace Modelo
             this.ProCodUnidadeMedida = 0;
             this.ProCodCategoria = 0;
             this.ProCodSubCategoria = 0;
+            this.ProDataValidade = DateTime.Now;
+            this.ProCodigoBarra = "";
+
         }
 
         public ModeloProduto(int proCod, String proNome, String proDescricao,
             String proFoto, Double proValorPago, Double proValorVenda, Double proQtde,
-            int proCodUnidadeMedida, int proCodCategoria, int proCodSubCategoria)
+            int proCodUnidadeMedida, int proCodCategoria, int proCodSubCategoria,
+            DateTime proDataValidade, String proCodigoBarra)
         {
             this.ProCod = proCod;
             this.ProNome = proNome;
@@ -36,11 +40,14 @@ namespace Modelo
             this.ProCodUnidadeMedida = proCodUnidadeMedida;
             this.ProCodCategoria = proCodCategoria;
             this.ProCodSubCategoria = proCodSubCategoria;
+            this.ProDataValidade = proDataValidade;
+            this.ProCodigoBarra = proCodigoBarra;
         }
 
         public ModeloProduto(int proCod, String proNome, String proDescricao,
            Byte[] proFoto, Double proValorPago, Double proValorVenda, Double proQtde,
-            int proCodUnidadeMedida, int proCodCategoria, int proCodSubCategoria)
+            int proCodUnidadeMedida, int proCodCategoria, int proCodSubCategoria,
+            DateTime proDataValidade, String proCodigoBarra)
         {
             this.ProCod = proCod;
             this.ProNome = proNome;
@@ -52,6 +59,8 @@ namespace Modelo
             this.ProCodUnidadeMedida = proCodUnidadeMedida;
             this.ProCodCategoria = proCodCategoria;
             this.ProCodSubCategoria = proCodSubCategoria;
+            this.ProDataValidade = proDataValidade;
+            this.ProCodigoBarra = proCodigoBarra;
         }
 
         private int pro_cod;
@@ -64,6 +73,9 @@ namespace Modelo
         private int pro_cod_und_medida;
         private int pro_cod_categoria;
         private int pro_cod_subcategoria;
+        private DateTime pro_data_validade;
+        private String pro_codigo_barra;
+
 
         public int ProCod { get => pro_cod; set => pro_cod = value; }
         public String ProNome { get => pro_nome; set => pro_nome = value; }
@@ -75,6 +87,8 @@ namespace Modelo
         public int ProCodUnidadeMedida { get => pro_cod_und_medida; set => pro_cod_und_medida = value; }
         public int ProCodCategoria { get => pro_cod_categoria; set => pro_cod_categoria = value; }
         public int ProCodSubCategoria { get => pro_cod_subcategoria; set => pro_cod_subcategoria = value; }
+        public DateTime ProDataValidade { get => pro_data_validade; set => pro_data_validade = value; }
+        public String ProCodigoBarra { get => pro_codigo_barra; set => pro_codigo_barra = value; }
 
         public void CarregaImagem(String imgCaminho)
         {

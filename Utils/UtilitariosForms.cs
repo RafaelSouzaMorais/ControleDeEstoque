@@ -37,6 +37,7 @@ namespace Utils
         {
             try
             {
+                tboxValor.Text = RemoverStringCamposMonetarios(tboxValor.Text);
                 tboxValor.Text = Convert.ToDouble(tboxValor.Text).ToString("C");
             }
             catch
@@ -45,20 +46,21 @@ namespace Utils
             }
         }
 
-        public void EnterCamposMonetarios(object sender, EventArgs e, TextBox tboxValor)
+        public string RemoverStringCamposMonetarios(string tboxValor)
         {
             String x = "";
-            for (int i = 0; i <= tboxValor.Text.Length - 1; i++)
+            for (int i = 0; i <= tboxValor.Length - 1; i++)
             {
-                if ((tboxValor.Text[i] >= '0' &&
-                    tboxValor.Text[i] <= '9') ||
-                    tboxValor.Text[i] == ',')
+                if ((tboxValor[i] >= '0' &&
+                    tboxValor[i] <= '9') ||
+                    tboxValor[i] == ',')
                 {
-                    x += tboxValor.Text[i];
+                    x += tboxValor[i];
                 }
             }
-            tboxValor.Text = x;
-            tboxValor.SelectAll();
+            tboxValor = x;
+            return tboxValor;
+            //tboxValor.SelectAll();
         }
 
     }

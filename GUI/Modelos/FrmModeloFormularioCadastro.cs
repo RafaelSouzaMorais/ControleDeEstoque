@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils;
+using static Utils.Enums;
 
 namespace GUI.Modelos
 {
     public partial class FrmModeloFormularioCadastro : Form
     {
-        public String operacao;
+        public TipoOperacaoRegistro operacao;
+
         public UtilitariosForms utilitariosForms;
         public FrmModeloFormularioCadastro()
         {
@@ -73,7 +75,7 @@ namespace GUI.Modelos
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             PreAlterar();
-            operacao = "alterar";
+            operacao = TipoOperacaoRegistro.Alterar;
             ControleBotoes("SC");
             pnDados.Enabled = true;
             PosAlterar();
@@ -82,7 +84,7 @@ namespace GUI.Modelos
         private void btnInserir_Click(object sender, EventArgs e)
         {
             PreInserir();
-            operacao = "inserir";
+            operacao = TipoOperacaoRegistro.Inserir;
             ControleBotoes("SC");
             pnDados.Enabled = true;
             PosInserir();
@@ -100,7 +102,6 @@ namespace GUI.Modelos
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -130,7 +131,7 @@ namespace GUI.Modelos
         }
         public virtual void RegistrarCampoMonetario(TextBox tboxValor)
         {
-            tboxValor.Enter += delegate (object sender, EventArgs e) { utilitariosForms.EnterCamposMonetarios(sender, e, tboxValor); };
+            //tboxValor.Enter += delegate (object sender, EventArgs e) { utilitariosForms.RemoverStringCamposMonetarios(tboxValor); };
             tboxValor.KeyPress += delegate (object sender, KeyPressEventArgs e) { utilitariosForms.ControleCamposMonetarios(sender, e, tboxValor); };
             tboxValor.Leave += delegate (object sender, EventArgs e) { utilitariosForms.ConsistenciaCamposMonetarios(sender, e, tboxValor); };
         }

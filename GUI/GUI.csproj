@@ -94,6 +94,12 @@
     <Compile Include="Popup\Cadastro\FrmPopupConsultaCategoria.Designer.cs">
       <DependentUpon>FrmPopupConsultaCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popup\Cadastro\FrmPopupConsultaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\Cadastro\FrmPopupConsultaProduto.Designer.cs">
+      <DependentUpon>FrmPopupConsultaProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popup\Cadastro\FrmPopupConsultaSubCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\Cadastro\FrmPopupConsultaCategoria.resx">
       <DependentUpon>FrmPopupConsultaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\Cadastro\FrmPopupConsultaProduto.resx">
+      <DependentUpon>FrmPopupConsultaProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\Cadastro\FrmPopupConsultaSubCategoria.resx">
       <DependentUpon>FrmPopupConsultaSubCategoria.cs</DependentUpon>

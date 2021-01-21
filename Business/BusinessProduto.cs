@@ -6,14 +6,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Modelo.Enums;
+using static Utils.Enums;
 
 namespace Business
 {
     public class BusinessProduto
     {
         private DALConexao _conexao;
-        private TipoOperacao operacao;
+        private TipoOperacaoRegistro operacao;
 
         public BusinessProduto(DALConexao conexao)
         {
@@ -36,7 +36,7 @@ namespace Business
 
         public void Alterar(ModeloProduto modelo)
         {
-            operacao = TipoOperacao.Alterar;
+            operacao = TipoOperacaoRegistro.Alterar;
             string msgErro = "";
             if (ValidaeCampos(modelo, ref msgErro))
             {
@@ -104,7 +104,7 @@ namespace Business
                 msgErro = "A Subcategoria do Produto é de preenchimento obrigatório.";
                 return false;
             }
-            if (operacao.Equals(TipoOperacao.Alterar) && modelo.ProCod <= 0)
+            if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.ProCod <= 0)
             {
                 throw new Exception("O código informado é inválido");
             }

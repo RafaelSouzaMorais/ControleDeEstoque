@@ -47,19 +47,19 @@
             this.cboxSubCategoria = new System.Windows.Forms.ComboBox();
             this.lblFoto = new System.Windows.Forms.Label();
             this.pnFoto = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictImagemProduto = new System.Windows.Forms.PictureBox();
             this.btnImportaImagem = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lblDataVencimento = new System.Windows.Forms.Label();
+            this.btnExcluiImagem = new System.Windows.Forms.Button();
+            this.lblDataValidade = new System.Windows.Forms.Label();
             this.lblCodigoBarra = new System.Windows.Forms.Label();
-            this.mtboxDataVencimento = new System.Windows.Forms.MaskedTextBox();
+            this.tboxDataValidade = new System.Windows.Forms.MaskedTextBox();
             this.tboxValorPago = new System.Windows.Forms.TextBox();
             this.tboxValorVenda = new System.Windows.Forms.TextBox();
             this.tboxCodigoBarra = new System.Windows.Forms.TextBox();
             this.pnDados.SuspendLayout();
             this.pnBotões.SuspendLayout();
             this.pnFoto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictImagemProduto)).BeginInit();
             this.SuspendLayout();
             // 
             // pnDados
@@ -67,10 +67,10 @@
             this.pnDados.Controls.Add(this.tboxCodigoBarra);
             this.pnDados.Controls.Add(this.tboxValorVenda);
             this.pnDados.Controls.Add(this.tboxValorPago);
-            this.pnDados.Controls.Add(this.mtboxDataVencimento);
+            this.pnDados.Controls.Add(this.tboxDataValidade);
             this.pnDados.Controls.Add(this.lblCodigoBarra);
-            this.pnDados.Controls.Add(this.lblDataVencimento);
-            this.pnDados.Controls.Add(this.button2);
+            this.pnDados.Controls.Add(this.lblDataValidade);
+            this.pnDados.Controls.Add(this.btnExcluiImagem);
             this.pnDados.Controls.Add(this.btnImportaImagem);
             this.pnDados.Controls.Add(this.pnFoto);
             this.pnDados.Controls.Add(this.lblFoto);
@@ -104,6 +104,15 @@
             // btnSalvar
             // 
             this.btnSalvar.Location = new System.Drawing.Point(544, 2);
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnRecuperar
+            // 
+            this.btnRecuperar.Click += new System.EventHandler(this.btnRecuperar_Click);
             // 
             // lblCodigo
             // 
@@ -202,7 +211,7 @@
             this.tboxCodigo.Location = new System.Drawing.Point(195, 7);
             this.tboxCodigo.Name = "tboxCodigo";
             this.tboxCodigo.Size = new System.Drawing.Size(100, 31);
-            this.tboxCodigo.TabIndex = 9;
+            this.tboxCodigo.TabIndex = 1;
             // 
             // tboxNome
             // 
@@ -210,7 +219,7 @@
             this.tboxNome.Location = new System.Drawing.Point(195, 52);
             this.tboxNome.Name = "tboxNome";
             this.tboxNome.Size = new System.Drawing.Size(202, 31);
-            this.tboxNome.TabIndex = 10;
+            this.tboxNome.TabIndex = 2;
             // 
             // tboxDescricao
             // 
@@ -219,7 +228,7 @@
             this.tboxDescricao.Multiline = true;
             this.tboxDescricao.Name = "tboxDescricao";
             this.tboxDescricao.Size = new System.Drawing.Size(202, 104);
-            this.tboxDescricao.TabIndex = 11;
+            this.tboxDescricao.TabIndex = 3;
             // 
             // tboxQuantidade
             // 
@@ -227,7 +236,7 @@
             this.tboxQuantidade.Location = new System.Drawing.Point(195, 218);
             this.tboxQuantidade.Name = "tboxQuantidade";
             this.tboxQuantidade.Size = new System.Drawing.Size(100, 31);
-            this.tboxQuantidade.TabIndex = 12;
+            this.tboxQuantidade.TabIndex = 4;
             // 
             // cboxUnidadeMedida
             // 
@@ -236,7 +245,7 @@
             this.cboxUnidadeMedida.Location = new System.Drawing.Point(525, 218);
             this.cboxUnidadeMedida.Name = "cboxUnidadeMedida";
             this.cboxUnidadeMedida.Size = new System.Drawing.Size(165, 31);
-            this.cboxUnidadeMedida.TabIndex = 15;
+            this.cboxUnidadeMedida.TabIndex = 8;
             // 
             // cboxCategoria
             // 
@@ -245,7 +254,8 @@
             this.cboxCategoria.Location = new System.Drawing.Point(525, 263);
             this.cboxCategoria.Name = "cboxCategoria";
             this.cboxCategoria.Size = new System.Drawing.Size(165, 31);
-            this.cboxCategoria.TabIndex = 16;
+            this.cboxCategoria.TabIndex = 9;
+            this.cboxCategoria.SelectedIndexChanged += new System.EventHandler(this.cboxCategoria_SelectedIndexChanged);
             // 
             // cboxSubCategoria
             // 
@@ -254,7 +264,7 @@
             this.cboxSubCategoria.Location = new System.Drawing.Point(524, 308);
             this.cboxSubCategoria.Name = "cboxSubCategoria";
             this.cboxSubCategoria.Size = new System.Drawing.Size(165, 31);
-            this.cboxSubCategoria.TabIndex = 17;
+            this.cboxSubCategoria.TabIndex = 10;
             // 
             // lblFoto
             // 
@@ -269,21 +279,21 @@
             // pnFoto
             // 
             this.pnFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnFoto.Controls.Add(this.pictureBox1);
+            this.pnFoto.Controls.Add(this.pictImagemProduto);
             this.pnFoto.Location = new System.Drawing.Point(502, 15);
             this.pnFoto.Name = "pnFoto";
             this.pnFoto.Size = new System.Drawing.Size(188, 188);
             this.pnFoto.TabIndex = 19;
             // 
-            // pictureBox1
+            // pictImagemProduto
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 186);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictImagemProduto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictImagemProduto.Location = new System.Drawing.Point(0, 0);
+            this.pictImagemProduto.Name = "pictImagemProduto";
+            this.pictImagemProduto.Size = new System.Drawing.Size(186, 186);
+            this.pictImagemProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictImagemProduto.TabIndex = 0;
+            this.pictImagemProduto.TabStop = false;
             // 
             // btnImportaImagem
             // 
@@ -292,33 +302,34 @@
             this.btnImportaImagem.Location = new System.Drawing.Point(435, 41);
             this.btnImportaImagem.Name = "btnImportaImagem";
             this.btnImportaImagem.Size = new System.Drawing.Size(61, 65);
-            this.btnImportaImagem.TabIndex = 20;
+            this.btnImportaImagem.TabIndex = 12;
             this.btnImportaImagem.Text = "Inserir Imagem";
             this.btnImportaImagem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImportaImagem.UseVisualStyleBackColor = true;
             this.btnImportaImagem.Click += new System.EventHandler(this.btnImportaImagem_Click);
             // 
-            // button2
+            // btnExcluiImagem
             // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(435, 112);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 65);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Remover Imagem";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnExcluiImagem.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluiImagem.Image")));
+            this.btnExcluiImagem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnExcluiImagem.Location = new System.Drawing.Point(435, 112);
+            this.btnExcluiImagem.Name = "btnExcluiImagem";
+            this.btnExcluiImagem.Size = new System.Drawing.Size(61, 65);
+            this.btnExcluiImagem.TabIndex = 21;
+            this.btnExcluiImagem.Text = "Remover Imagem";
+            this.btnExcluiImagem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExcluiImagem.UseVisualStyleBackColor = true;
+            this.btnExcluiImagem.Click += new System.EventHandler(this.btnExcluiImagem_Click);
             // 
-            // lblDataVencimento
+            // lblDataValidade
             // 
-            this.lblDataVencimento.AutoSize = true;
-            this.lblDataVencimento.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataVencimento.Location = new System.Drawing.Point(300, 359);
-            this.lblDataVencimento.Name = "lblDataVencimento";
-            this.lblDataVencimento.Size = new System.Drawing.Size(219, 23);
-            this.lblDataVencimento.TabIndex = 22;
-            this.lblDataVencimento.Text = "Data de Vencimento:";
+            this.lblDataValidade.AutoSize = true;
+            this.lblDataValidade.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataValidade.Location = new System.Drawing.Point(300, 359);
+            this.lblDataValidade.Name = "lblDataValidade";
+            this.lblDataValidade.Size = new System.Drawing.Size(197, 23);
+            this.lblDataValidade.TabIndex = 22;
+            this.lblDataValidade.Text = "Data de Validade:";
             // 
             // lblCodigoBarra
             // 
@@ -330,13 +341,15 @@
             this.lblCodigoBarra.TabIndex = 23;
             this.lblCodigoBarra.Text = "Código de barra:";
             // 
-            // mtboxDataVencimento
+            // tboxDataValidade
             // 
-            this.mtboxDataVencimento.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtboxDataVencimento.Location = new System.Drawing.Point(525, 351);
-            this.mtboxDataVencimento.Name = "mtboxDataVencimento";
-            this.mtboxDataVencimento.Size = new System.Drawing.Size(100, 31);
-            this.mtboxDataVencimento.TabIndex = 24;
+            this.tboxDataValidade.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxDataValidade.Location = new System.Drawing.Point(525, 351);
+            this.tboxDataValidade.Mask = "00/00/0000";
+            this.tboxDataValidade.Name = "tboxDataValidade";
+            this.tboxDataValidade.Size = new System.Drawing.Size(100, 31);
+            this.tboxDataValidade.TabIndex = 11;
+            this.tboxDataValidade.ValidatingType = typeof(System.DateTime);
             // 
             // tboxValorPago
             // 
@@ -344,7 +357,7 @@
             this.tboxValorPago.Location = new System.Drawing.Point(195, 263);
             this.tboxValorPago.Name = "tboxValorPago";
             this.tboxValorPago.Size = new System.Drawing.Size(100, 31);
-            this.tboxValorPago.TabIndex = 25;
+            this.tboxValorPago.TabIndex = 5;
             // 
             // tboxValorVenda
             // 
@@ -352,7 +365,7 @@
             this.tboxValorVenda.Location = new System.Drawing.Point(195, 308);
             this.tboxValorVenda.Name = "tboxValorVenda";
             this.tboxValorVenda.Size = new System.Drawing.Size(100, 31);
-            this.tboxValorVenda.TabIndex = 26;
+            this.tboxValorVenda.TabIndex = 6;
             // 
             // tboxCodigoBarra
             // 
@@ -360,7 +373,7 @@
             this.tboxCodigoBarra.Location = new System.Drawing.Point(195, 351);
             this.tboxCodigoBarra.Name = "tboxCodigoBarra";
             this.tboxCodigoBarra.Size = new System.Drawing.Size(100, 31);
-            this.tboxCodigoBarra.TabIndex = 27;
+            this.tboxCodigoBarra.TabIndex = 7;
             // 
             // FrmProduto
             // 
@@ -373,7 +386,7 @@
             this.pnDados.PerformLayout();
             this.pnBotões.ResumeLayout(false);
             this.pnFoto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictImagemProduto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,14 +411,14 @@
         private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnExcluiImagem;
         private System.Windows.Forms.Button btnImportaImagem;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblDataVencimento;
+        private System.Windows.Forms.PictureBox pictImagemProduto;
+        private System.Windows.Forms.Label lblDataValidade;
         private System.Windows.Forms.Label lblCodigoBarra;
         private System.Windows.Forms.TextBox tboxCodigoBarra;
         private System.Windows.Forms.TextBox tboxValorVenda;
         private System.Windows.Forms.TextBox tboxValorPago;
-        private System.Windows.Forms.MaskedTextBox mtboxDataVencimento;
+        private System.Windows.Forms.MaskedTextBox tboxDataValidade;
     }
 }

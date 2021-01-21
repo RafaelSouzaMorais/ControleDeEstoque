@@ -42,12 +42,23 @@ namespace Business
             DALCategoria DALObj = new DALCategoria(_conexao);
             DALObj.Alterar(modelo);
         }
+        
         public void Excluir(ModeloCategoria modelo)
         {
+            /*verifica se existe registro em subcategoria*/
+            if(VerificaRegistroSubCategoria(modelo.CatCod))
+            {
+                throw new Exception("Não é possivel excluir essa Categoria pois ainda existe Subcategoria cadastrada para ela.");
+            }
             DALCategoria DALObj = new DALCategoria(_conexao);
             DALObj.Excluir(modelo);
         }
-    
+
+        /// <summary>
+        /// Recupera o DataTable da Subcategoria
+        /// </summary>
+        /// <param name="valor">Valor referente ao nome da Subcategoria</param>
+        /// <returns>Retorna o DataTable da Subcategoria mais o nome da categoria</returns>
         public DataTable Localizar(String valor)
         {
             DALCategoria DALObj = new DALCategoria(_conexao);
@@ -58,6 +69,22 @@ namespace Business
         {
             DALCategoria DALObj = new DALCategoria(_conexao);
             return DALObj.CarregaModeloCategoria(codigo);
+        }
+
+        /// <summary>
+        /// Verifica se existe registro em SubCategoria referenciando a Categoria
+        /// </summary>
+        /// /// <param name="valor">Valor referente ao código da categoria</param>
+        /// <returns>Retorna true caso exista registro em SubCategoria referenciando Categoria</returns>
+        public bool VerificaRegistroSubCategoria(int valor)
+        {
+            DALSubCategoria DALObj = new DALSubCategoria(_conexao);
+            int rowCount = DALObj.RecuperarPorCategoria(valor).Rows.Count;
+            if(rowCount > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

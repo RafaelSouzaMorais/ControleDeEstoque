@@ -84,13 +84,28 @@ namespace DAL
 
         }
 
-        public DataTable RecuperarPorNome (String valor)
+        public DataTable RecuperarPorNome(String valor)
         {
             DataTable tabela = new DataTable();
             try
             {
                 SqlDataAdapter da = new SqlDataAdapter(@"select scat_cod, scat_nome,scat_cod_categoria, cat_nome
                                                             from scat_subcategoria inner join cat_categoria on scat_cod_categoria = cat_cod where scat_nome like '%" + valor + "%'", _conexao.ObjetoConexao);
+                da.Fill(tabela);
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro na recuperação de Subcategoria: " + erro.Message);
+            }
+            return tabela;
+        }
+        public DataTable RecuperarPorCategoria(int valor)
+        {
+            DataTable tabela = new DataTable();
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter(@"select scat_cod, scat_nome,scat_cod_categoria                                                            
+                                                            from scat_subcategoria where scat_cod_categoria =  "+valor, _conexao.ObjetoConexao);
                 da.Fill(tabela);
             }
             catch (Exception erro)
