@@ -138,23 +138,21 @@ namespace GUI.Cadastro
 
             modelo.ProNome = Convert.ToString(tboxNome.Text);
             modelo.ProDescricao = Convert.ToString(tboxDescricao.Text);
-            //modelo.ProValorPago = Convert.ToDouble(utilitariosForms.RemoverStringCamposMonetarios(tboxValorPago.Text));
-            modelo.ProValorVenda = Convert.ToDouble(utilitariosForms.RemoverStringCamposMonetarios(tboxValorVenda.Text));
-            //modelo.ProQtde = Convert.ToDouble(tboxQuantidade.Text);
-            modelo.ProCodUnidadeMedida = Convert.ToInt32(cboxUnidadeMedida.SelectedValue);
-            modelo.ProCodSubCategoria = Convert.ToInt32(cboxSubCategoria.SelectedValue);
-            modelo.ProCodCategoria = Convert.ToInt32(cboxCategoria.SelectedValue);
-            //modelo.ProCodigoBarra = Convert.ToString(tboxCodigoBarra.Text);
-            if (pictImagemProduto.Image == null)
+            if (string.IsNullOrEmpty(utilitariosForms.RemoverStringCamposMonetarios(tboxValorVenda.Text).Trim()))
             {
-
-                modelo.CarregaImagem(foto);
+                modelo.ProValorVenda = 0;
             }
             else
             {
+                modelo.ProValorVenda = Convert.ToDouble(utilitariosForms.RemoverStringCamposMonetarios(tboxValorVenda.Text));
+            }
+            modelo.ProCodUnidadeMedida = Convert.ToInt32(cboxUnidadeMedida.SelectedValue);
+            modelo.ProCodSubCategoria = Convert.ToInt32(cboxSubCategoria.SelectedValue);
+            modelo.ProCodCategoria = Convert.ToInt32(cboxCategoria.SelectedValue);
+            if (pictImagemProduto.Image != null)
+            { 
                 modelo.ProFoto = imageToByteArray(pictImagemProduto.Image);
             }
-            //modelo.ProDataValidade = dtpDataValidade.Value;
             return modelo;
 
         }

@@ -79,16 +79,11 @@ namespace Business
                 msgErro = "A descrição do Produto é de preenchimento obrigatório.";
                 return false;
             }
-            //if (modelo.ProValorVenda <= 0)
-            //{
-            //    msgErro = "O Valor de venda do Produto é de preenchimento obrigatório.";
-            //    return false;
-            //}
-            //if (modelo.ProQtde < 0)
-            //{
-            //    msgErro = "A quantidade do Produto não pode ser negativa.";
-            //    return false;
-            //}
+            if (modelo.ProValorVenda <= 0)
+            {
+                msgErro = "O Valor de venda do Produto é de preenchimento obrigatório.";
+                return false;
+            }
             if (modelo.ProCodUnidadeMedida <= 0)
             {
                 msgErro = "A Unidade de Medidado Produto é de preenchimento obrigatório.";

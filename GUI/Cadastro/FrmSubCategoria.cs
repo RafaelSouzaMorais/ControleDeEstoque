@@ -72,7 +72,7 @@ namespace GUI.Cadastro
                     DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                     BusinessSubCategoria BSubCategoria = new BusinessSubCategoria(conexao);
                     ModelSubCategoria modelo = new ModelSubCategoria();
-                    modelo.ScatCod = Convert.ToInt32(tboxCodigo);
+                    modelo.ScatCod = Convert.ToInt32(tboxCodigo.Text);
                     modelo.ScatNome = Convert.ToString(tboxNomeSubCat);
                     modelo.ScatCodCategoria = Convert.ToInt32(cboxCatCod.SelectedValue);
                     BSubCategoria.Excluir(modelo);
