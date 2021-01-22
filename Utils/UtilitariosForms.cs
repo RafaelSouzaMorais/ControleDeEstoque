@@ -33,7 +33,7 @@ namespace Utils
             }
         }
 
-        public void ConsistenciaCamposMonetarios(object sender, EventArgs e, TextBox tboxValor)
+        public void ConsistenciaCamposMonetarios(TextBox tboxValor)
         {
             try
             {

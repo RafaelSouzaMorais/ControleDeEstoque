@@ -1,5 +1,5 @@
 ﻿using DAL;
-using Modelo;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,7 +18,7 @@ namespace Business
             _conexao = conexao;
         }
 
-        public void Incluir(ModeloUnidadeMedida modelo)
+        public void Incluir(ModelUnidadeMedida modelo)
         {
             //Verifica se o nome da categoria está preenchido
             if (modelo.UmedNome.Trim().Length == 0)
@@ -33,7 +33,7 @@ namespace Business
             DALObj.Incluir(modelo);
         }
 
-        public void Alterar(ModeloUnidadeMedida modelo)
+        public void Alterar(ModelUnidadeMedida modelo)
         {
             //Verifica se o nome da categoria está preenchido
             if (modelo.UmedNome.Trim().Length == 0)
@@ -47,7 +47,7 @@ namespace Business
             DALUnidadeMedida DALObj = new DALUnidadeMedida(_conexao);
             DALObj.Alterar(modelo);
         }
-        public void Excluir(ModeloUnidadeMedida modelo)
+        public void Excluir(ModelUnidadeMedida modelo)
         {
             DALUnidadeMedida DALObj = new DALUnidadeMedida(_conexao);
             DALObj.Excluir(modelo);
@@ -59,7 +59,7 @@ namespace Business
             return DALObj.RecuperarPorNome(valor);
         }
 
-        public ModeloUnidadeMedida CarregaModeloUnidadeMedida(int codigo)
+        public ModelUnidadeMedida CarregaModeloUnidadeMedida(int codigo)
         {
             DALUnidadeMedida DALObj = new DALUnidadeMedida(_conexao);
             return DALObj.CarregaModeloUnidadeMedida(codigo);

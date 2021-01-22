@@ -1,4 +1,4 @@
-﻿using Modelo;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +17,7 @@ namespace DAL
         {
             this._conexao = conexao;
         }
-        public void Incluir(ModeloSubCategoria modelo)
+        public void Incluir(ModelSubCategoria modelo)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace DAL
             }
 
         }
-        public void Alterar(ModeloSubCategoria modelo)
+        public void Alterar(ModelSubCategoria modelo)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace DAL
             }
 
         }
-        public void Excluir(ModeloSubCategoria modelo)
+        public void Excluir(ModelSubCategoria modelo)
         {
             try
             {
@@ -114,9 +114,9 @@ namespace DAL
             }
             return tabela;
         }
-        public ModeloSubCategoria CarregaModeloSubCategoria(int codigo)
+        public ModelSubCategoria CarregaModeloSubCategoria(int codigo)
         {
-            ModeloSubCategoria modelo = new ModeloSubCategoria();
+            ModelSubCategoria modelo = new ModelSubCategoria();
             try
             {
                 SqlCommand cmd = new SqlCommand();

@@ -88,6 +88,12 @@
     <Compile Include="Modelos\FrmModeloFormularioConsulta.Designer.cs">
       <DependentUpon>FrmModeloFormularioConsulta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Movimentação\FrmRegistroEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimentação\FrmRegistroEntrada.Designer.cs">
+      <DependentUpon>FrmRegistroEntrada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popup\Cadastro\FrmPopupConsultaCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modelos\FrmModeloFormularioConsulta.resx">
       <DependentUpon>FrmModeloFormularioConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimentação\FrmRegistroEntrada.resx">
+      <DependentUpon>FrmRegistroEntrada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\Cadastro\FrmPopupConsultaCategoria.resx">
       <DependentUpon>FrmPopupConsultaCategoria.cs</DependentUpon>

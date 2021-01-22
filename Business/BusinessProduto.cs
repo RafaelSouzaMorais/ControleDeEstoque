@@ -1,5 +1,5 @@
 ﻿using DAL;
-using Modelo;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,7 +20,7 @@ namespace Business
             _conexao = conexao;
         }
         
-        public void Incluir(ModeloProduto modelo)
+        public void Incluir(ModelProduto modelo)
         {
             string msgErro = "";
             if (ValidaeCampos(modelo, ref msgErro))
@@ -34,7 +34,7 @@ namespace Business
             }
         }
 
-        public void Alterar(ModeloProduto modelo)
+        public void Alterar(ModelProduto modelo)
         {
             operacao = TipoOperacaoRegistro.Alterar;
             string msgErro = "";
@@ -49,7 +49,7 @@ namespace Business
             }
         }
         
-        public void Excluir(ModeloProduto modelo)
+        public void Excluir(ModelProduto modelo)
         {
             DALProduto DALObj = new DALProduto(_conexao);
             DALObj.Excluir(modelo);
@@ -61,13 +61,13 @@ namespace Business
             return DALObj.RecuperarPorNome(valor);
         }
 
-        public ModeloProduto CarregaModeloCategoria(int codigo)
+        public ModelProduto CarregaModeloProduto(int codigo)
         {
             DALProduto DALObj = new DALProduto(_conexao);
             return DALObj.CarregaModeloProduto(codigo);
         }
         
-        private bool ValidaeCampos(ModeloProduto modelo, ref string msgErro)
+        private bool ValidaeCampos(ModelProduto modelo, ref string msgErro)
         {
             if (modelo.ProNome.Trim().Length == 0)
             {
@@ -79,16 +79,16 @@ namespace Business
                 msgErro = "A descrição do Produto é de preenchimento obrigatório.";
                 return false;
             }
-            if (modelo.ProValorVenda <= 0)
-            {
-                msgErro = "O Valor de venda do Produto é de preenchimento obrigatório.";
-                return false;
-            }
-            if (modelo.ProQtde < 0)
-            {
-                msgErro = "A quantidade do Produto não pode ser negativa.";
-                return false;
-            }
+            //if (modelo.ProValorVenda <= 0)
+            //{
+            //    msgErro = "O Valor de venda do Produto é de preenchimento obrigatório.";
+            //    return false;
+            //}
+            //if (modelo.ProQtde < 0)
+            //{
+            //    msgErro = "A quantidade do Produto não pode ser negativa.";
+            //    return false;
+            //}
             if (modelo.ProCodUnidadeMedida <= 0)
             {
                 msgErro = "A Unidade de Medidado Produto é de preenchimento obrigatório.";

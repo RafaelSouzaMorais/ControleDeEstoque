@@ -1,5 +1,5 @@
 ﻿using DAL;
-using Modelo;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +17,7 @@ namespace Business
         {
             _conexao = conexao;
         }
-        public void Incluir(ModeloSubCategoria modelo)
+        public void Incluir(ModelSubCategoria modelo)
         {
             //Verifica se o nome da categoria está preenchido
             if (modelo.ScatNome.Trim().Length == 0)
@@ -33,7 +33,7 @@ namespace Business
             DALObj.Incluir(modelo);
         }
 
-        public void Alterar(ModeloSubCategoria modelo)
+        public void Alterar(ModelSubCategoria modelo)
         {
             //Verifica se o nome da categoria está preenchido
             if (modelo.ScatNome.Trim().Length == 0)
@@ -48,7 +48,7 @@ namespace Business
             DALSubCategoria DALObj = new DALSubCategoria(_conexao);
             DALObj.Alterar(modelo);
         }
-        public void Excluir(ModeloSubCategoria modelo)
+        public void Excluir(ModelSubCategoria modelo)
         {
             DALSubCategoria DALObj = new DALSubCategoria(_conexao);
             DALObj.Excluir(modelo);
@@ -66,7 +66,7 @@ namespace Business
             return DALObj.RecuperarPorCategoria(valor);
         }
 
-        public ModeloSubCategoria CarregaModeloSubCategoria(int codigo)
+        public ModelSubCategoria CarregaModeloSubCategoria(int codigo)
         {
             DALSubCategoria DALObj = new DALSubCategoria(_conexao);
             return DALObj.CarregaModeloSubCategoria(codigo);

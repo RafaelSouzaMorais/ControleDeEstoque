@@ -1,4 +1,4 @@
-﻿using Modelo;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +17,7 @@ namespace DAL
         {
             this._conexao = conexao;
         }
-        public void Incluir (ModeloCategoria modelo)
+        public void Incluir (ModelCategoria modelo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
@@ -27,7 +27,7 @@ namespace DAL
             modelo.CatCod = Convert.ToInt32(cmd.ExecuteScalar());
             _conexao.Desconectar();
         }
-        public void Alterar (ModeloCategoria modelo)
+        public void Alterar (ModelCategoria modelo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
@@ -38,7 +38,7 @@ namespace DAL
             cmd.ExecuteNonQuery();
             _conexao.Desconectar();
         }
-        public void Excluir (ModeloCategoria modelo)
+        public void Excluir (ModelCategoria modelo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
@@ -56,9 +56,9 @@ namespace DAL
             da.Fill(tabela);
             return tabela;
         }
-        public ModeloCategoria CarregaModeloCategoria (int codigo)
+        public ModelCategoria CarregaModeloCategoria (int codigo)
         {
-            ModeloCategoria modelo = new ModeloCategoria();
+            ModelCategoria modelo = new ModelCategoria();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
             cmd.CommandText = "Select * from cat_categoria where cat_cod = @codigo";

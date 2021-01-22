@@ -7,8 +7,8 @@
     <ProjectGuid>{E414C3E2-34EB-4B35-8931-0854AB8EEEA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Modelo</RootNamespace>
-    <AssemblyName>Modelo</AssemblyName>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModeloCategoria.cs" />
-    <Compile Include="ModeloProduto.cs" />
-    <Compile Include="ModeloSubCategoria.cs" />
-    <Compile Include="ModeloUnidadeMedida.cs" />
+    <Compile Include="ModelCategoria.cs" />
+    <Compile Include="ModelEstoque.cs" />
+    <Compile Include="ModelProduto.cs" />
+    <Compile Include="ModelRegistroEntrada.cs" />
+    <Compile Include="ModelSubCategoria.cs" />
+    <Compile Include="ModelUnidadeMedida.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

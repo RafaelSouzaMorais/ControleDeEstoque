@@ -41,6 +41,7 @@
             // 
             // pnDados
             // 
+            //this.pnDados.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnDados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnDados.Location = new System.Drawing.Point(12, 12);
             this.pnDados.Name = "pnDados";

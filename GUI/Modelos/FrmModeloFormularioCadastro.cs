@@ -131,9 +131,8 @@ namespace GUI.Modelos
         }
         public virtual void RegistrarCampoMonetario(TextBox tboxValor)
         {
-            //tboxValor.Enter += delegate (object sender, EventArgs e) { utilitariosForms.RemoverStringCamposMonetarios(tboxValor); };
             tboxValor.KeyPress += delegate (object sender, KeyPressEventArgs e) { utilitariosForms.ControleCamposMonetarios(sender, e, tboxValor); };
-            tboxValor.Leave += delegate (object sender, EventArgs e) { utilitariosForms.ConsistenciaCamposMonetarios(sender, e, tboxValor); };
+            tboxValor.Leave += delegate (object sender, EventArgs e) { utilitariosForms.ConsistenciaCamposMonetarios(tboxValor); };
         }
     }
 }

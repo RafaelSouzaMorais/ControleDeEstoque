@@ -1,7 +1,7 @@
 ﻿using Business;
 using DAL;
 using GUI.Popup.Cadastro;
-using Modelo;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,13 +42,13 @@ namespace GUI.Cadastro
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaSubCategoria frm = new FrmPopupConsultaSubCategoria();
+            FrmPopupConsultaSubCategoria frm = new FrmPopupConsultaSubCategoria(TipoAberturaInterface.search);
             frm.ShowDialog();
             if (frm.retorno.Count > 0)
             {
                 DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                 BusinessSubCategoria BSubcategoria = new BusinessSubCategoria(conexao);
-                ModeloSubCategoria modelo = BSubcategoria.CarregaModeloSubCategoria(Convert.ToInt32(frm.retorno["Código"]));
+                ModelSubCategoria modelo = BSubcategoria.CarregaModeloSubCategoria(Convert.ToInt32(frm.retorno["Código"]));
                 tboxCodigo.Text = Convert.ToString(modelo.ScatCod);
                 tboxNomeSubCat.Text = modelo.ScatNome;
                 cboxCatCod.SelectedValue = modelo.ScatCodCategoria;
@@ -70,12 +70,12 @@ namespace GUI.Cadastro
                 if (resposta.ToString().Equals("Yes"))
                 {
                     DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
-                    BusinessSubCategoria BCategoria = new BusinessSubCategoria(conexao);
-                    ModeloSubCategoria modelo = new ModeloSubCategoria();
+                    BusinessSubCategoria BSubCategoria = new BusinessSubCategoria(conexao);
+                    ModelSubCategoria modelo = new ModelSubCategoria();
                     modelo.ScatCod = Convert.ToInt32(tboxCodigo);
                     modelo.ScatNome = Convert.ToString(tboxNomeSubCat);
                     modelo.ScatCodCategoria = Convert.ToInt32(cboxCatCod.SelectedValue);
-                    BCategoria.Excluir(modelo);
+                    BSubCategoria.Excluir(modelo);
                     MessageBox.Show("Exclusão feita com sucesso!");
                     ControleBotoes("IR");
                     LimparFormulario();
@@ -95,7 +95,7 @@ namespace GUI.Cadastro
             {
                 DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                 BusinessSubCategoria BSubCategoria = new BusinessSubCategoria(conexao);
-                ModeloSubCategoria modelo = new ModeloSubCategoria();
+                ModelSubCategoria modelo = new ModelSubCategoria();
                 modelo.ScatNome = Convert.ToString(tboxNomeSubCat.Text);
                 modelo.ScatCodCategoria = Convert.ToInt32(cboxCatCod.SelectedValue);
 

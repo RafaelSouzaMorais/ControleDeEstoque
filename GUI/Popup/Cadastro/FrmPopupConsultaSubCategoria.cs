@@ -7,13 +7,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static Utils.Enums;
 
 namespace GUI.Popup.Cadastro
 {
     public partial class FrmPopupConsultaSubCategoria : GUI.Modelos.FrmModeloFormularioConsulta
     {
-        public FrmPopupConsultaSubCategoria()
+        public FrmPopupConsultaSubCategoria(TipoAberturaInterface tpAbertura)
         {
+            tipoAbertura = tpAbertura;
             InitializeComponent();
         }
 

@@ -2,7 +2,7 @@
 using DAL;
 using GUI.Modelos;
 using GUI.Popup.Cadastro;
-using Modelo;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,7 +36,7 @@ namespace GUI.Cadastro
                 {                    
                     DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                     BusinessCategoria BCategoria = new BusinessCategoria(conexao);
-                    ModeloCategoria modelo = new ModeloCategoria(Convert.ToInt32(tboxCodigo.Text), Convert.ToString(tboxNome.Text));
+                    ModelCategoria modelo = new ModelCategoria(Convert.ToInt32(tboxCodigo.Text), Convert.ToString(tboxNome.Text));
                     BCategoria.Excluir(modelo);
                     MessageBox.Show("Exclusão feita com sucesso!");
                     ControleBotoes("IR");
@@ -56,7 +56,7 @@ namespace GUI.Cadastro
             {
                 DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                 BusinessCategoria BCategoria = new BusinessCategoria(conexao);
-                ModeloCategoria modelo = new ModeloCategoria();
+                ModelCategoria modelo = new ModelCategoria();
                 modelo.CatNome = Convert.ToString(tboxNome.Text);
 
                 if (operacao.Equals(TipoOperacaoRegistro.Inserir))
@@ -84,13 +84,13 @@ namespace GUI.Cadastro
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaCategoria frm = new FrmPopupConsultaCategoria();
+            FrmPopupConsultaCategoria frm = new FrmPopupConsultaCategoria(TipoAberturaInterface.search);
             frm.ShowDialog();
             if(frm.retorno.Count > 0)
             {
                 DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                 BusinessCategoria BCategoria = new BusinessCategoria(conexao);
-                ModeloCategoria modelo = BCategoria.CarregaModeloCategoria(Convert.ToInt32(frm.retorno["Código"]));
+                ModelCategoria modelo = BCategoria.CarregaModeloCategoria(Convert.ToInt32(frm.retorno["Código"]));
                 tboxCodigo.Text = Convert.ToString(modelo.CatCod);
                 tboxNome.Text = modelo.CatNome;
                 ControleBotoes("AEC");

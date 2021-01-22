@@ -7,13 +7,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static Utils.Enums;
 
 namespace GUI.Popup.Cadastro
 {
     public partial class FrmPopupConsultaUnidadeMedida : GUI.Modelos.FrmModeloFormularioConsulta
     {
-        public FrmPopupConsultaUnidadeMedida()
+        public FrmPopupConsultaUnidadeMedida(TipoAberturaInterface tpAbertura)
         {
+            tipoAbertura = tpAbertura;
             InitializeComponent();
         }
 
@@ -31,7 +33,7 @@ namespace GUI.Popup.Cadastro
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
             DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
-            BusinessUnidadeMedida BUnidadeMedida= new BusinessUnidadeMedida(conexao);
+            BusinessUnidadeMedida BUnidadeMedida = new BusinessUnidadeMedida(conexao);
             dgvDados.DataSource = BUnidadeMedida.Localizar(tboxUnidadeMedida.Text);
         }
     }

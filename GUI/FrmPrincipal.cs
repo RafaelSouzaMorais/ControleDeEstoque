@@ -1,4 +1,5 @@
 ﻿using GUI.Cadastro;
+using GUI.Movimentação;
 using GUI.Popup.Cadastro;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static GUI.Modelos.FrmModeloFormularioConsulta;
+using static Utils.Enums;
 
 namespace GUI
 {
@@ -33,7 +36,7 @@ namespace GUI
 
         private void categoriaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaCategoria f = new FrmPopupConsultaCategoria();
+            FrmPopupConsultaCategoria f = new FrmPopupConsultaCategoria(TipoAberturaInterface.menu);
             f.MdiParent = this;
             f.Show();
         }
@@ -47,7 +50,7 @@ namespace GUI
 
         private void subCategoriaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaSubCategoria f = new FrmPopupConsultaSubCategoria();
+            FrmPopupConsultaSubCategoria f = new FrmPopupConsultaSubCategoria(TipoAberturaInterface.menu);
             f.MdiParent = this;
             f.Show();
         }
@@ -61,7 +64,7 @@ namespace GUI
 
         private void unidadeDeMedidaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaUnidadeMedida f = new FrmPopupConsultaUnidadeMedida();
+            FrmPopupConsultaUnidadeMedida f = new FrmPopupConsultaUnidadeMedida(TipoAberturaInterface.menu);
             f.MdiParent = this;
             f.Show();
         }
@@ -75,7 +78,14 @@ namespace GUI
 
         private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaProduto f = new FrmPopupConsultaProduto();
+            FrmPopupConsultaProduto f = new FrmPopupConsultaProduto(TipoAberturaInterface.menu);
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void registroDeEntradaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmRegistroEntrada f = new FrmRegistroEntrada();
             f.MdiParent = this;
             f.Show();
         }

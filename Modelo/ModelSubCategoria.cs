@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modelo
+namespace Model
 {
-    public class ModeloSubCategoria
+    public class ModelSubCategoria
     {
-        public ModeloSubCategoria()
+        public ModelSubCategoria()
         {
             ScatCod = 0;
             ScatNome = "";
             ScatCodCategoria = 0;
         }
 
-        public ModeloSubCategoria(int scatCod, int scatCodCategoria, string scatNome)
+        public ModelSubCategoria(int scatCod, int scatCodCategoria, string scatNome)
         {
             ScatCod = scatCod;
             ScatNome = scatNome;

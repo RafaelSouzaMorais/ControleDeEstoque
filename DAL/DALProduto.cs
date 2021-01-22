@@ -1,4 +1,4 @@
-﻿using Modelo;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +17,7 @@ namespace DAL
         {
             this._conexao = conexao;
         }
-        public void Incluir(ModeloProduto modelo)
+        public void Incluir(ModelProduto modelo)
         {
             try
             {
@@ -27,9 +27,7 @@ namespace DAL
                                        (pro_nome,
                                        pro_descricao,
                                        pro_foto,
-                                       pro_valor_pago,
                                        pro_valor_venda,
-                                       pro_qtde,
                                        pro_cod_und_medida,
                                        pro_cod_categoria,
                                        pro_cod_subcategoria)
@@ -37,9 +35,7 @@ namespace DAL
                                        (@nome,
 		                               @descricao,
 		                               @foto,
-		                               @valorPago,
 		                               @valorVenda,
-		                               @quantidade,
 		                               @codigoUnidadeMedida,
 		                               @codigoCategoria,
 		                               @codigoSubCategoria)
@@ -55,9 +51,7 @@ namespace DAL
                 {
                     cmd.Parameters["@foto"].Value = modelo.ProFoto;
                 }
-                cmd.Parameters.AddWithValue("@valorPago", modelo.ProValorPago);
                 cmd.Parameters.AddWithValue("@valorVenda", modelo.ProValorVenda);
-                cmd.Parameters.AddWithValue("@quantidade", modelo.ProQtde);
                 cmd.Parameters.AddWithValue("@codigoUnidadeMedida", modelo.ProCodUnidadeMedida);
                 cmd.Parameters.AddWithValue("@codigoCategoria", modelo.ProCodCategoria);
                 cmd.Parameters.AddWithValue("@codigoSubCategoria", modelo.ProCodSubCategoria);
@@ -73,43 +67,50 @@ namespace DAL
                 _conexao.Desconectar();
             }
         }
-        public void Alterar(ModeloProduto modelo)
+        public void Alterar(ModelProduto modelo)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = _conexao.ObjetoConexao;
-            cmd.CommandText = @"UPDATE pro_produto
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conexao.ObjetoConexao;
+                cmd.CommandText = @"UPDATE pro_produto
                                 SET pro_nome = @nome,
                                     pro_descricao = @descricao,
                                     pro_foto = @foto,
-                                    pro_valor_pago = @valorPago,
                                     pro_valor_venda = @valorVenda,
-                                    pro_qtde = @quantidade,
                                     pro_cod_und_medida = @codigoUnidadeMedida,
                                     pro_cod_categoria = @codigoCategoria,
                                     pro_cod_subcategoria = @codigoSubCategoria
                                 WHERE pro_cod = @codigo";
-            cmd.Parameters.AddWithValue("@nome", modelo.ProNome);
-            cmd.Parameters.AddWithValue("@descricao", modelo.ProDescricao);
-            cmd.Parameters.Add("@foto", SqlDbType.Image);
-            if (modelo.ProFoto == null)
-            {
-                cmd.Parameters["@foto"].Value = DBNull.Value;
+                cmd.Parameters.AddWithValue("@nome", modelo.ProNome);
+                cmd.Parameters.AddWithValue("@descricao", modelo.ProDescricao);
+                cmd.Parameters.Add("@foto", SqlDbType.Image);
+                if (modelo.ProFoto == null)
+                {
+                    cmd.Parameters["@foto"].Value = DBNull.Value;
+                }
+                else
+                {
+                    cmd.Parameters["@foto"].Value = modelo.ProFoto;
+                }
+                cmd.Parameters.AddWithValue("@valorVenda", modelo.ProValorVenda);
+                cmd.Parameters.AddWithValue("@codigoUnidadeMedida", modelo.ProCodUnidadeMedida);
+                cmd.Parameters.AddWithValue("@codigoCategoria", modelo.ProCodCategoria);
+                cmd.Parameters.AddWithValue("@codigoSubCategoria", modelo.ProCodSubCategoria);
+                cmd.Parameters.AddWithValue("@codigo", modelo.ProCod);
+                _conexao.Conectar();
+                cmd.ExecuteNonQuery();
             }
-            else
+            catch (Exception erro)
             {
-                cmd.Parameters["@foto"].Value = modelo.ProFoto;
+                throw new Exception("Erro na edição do Produto: " + erro.Message);
             }
-            cmd.Parameters.AddWithValue("@valorPago", modelo.ProValorPago);
-            cmd.Parameters.AddWithValue("@valorVenda", modelo.ProValorVenda);
-            cmd.Parameters.AddWithValue("@quantidade", modelo.ProQtde);
-            cmd.Parameters.AddWithValue("@codigoUnidadeMedida", modelo.ProCodUnidadeMedida);
-            cmd.Parameters.AddWithValue("@codigoCategoria", modelo.ProCodCategoria);
-            cmd.Parameters.AddWithValue("@codigoSubCategoria", modelo.ProCodSubCategoria);
-            _conexao.Conectar();
-            cmd.ExecuteNonQuery();
-            _conexao.Desconectar();
+            finally
+            {
+                _conexao.Desconectar();
+            }
         }
-        public void Excluir(ModeloProduto modelo)
+        public void Excluir(ModelProduto modelo)
         {
             try
             {
@@ -137,9 +138,9 @@ namespace DAL
             da.Fill(tabela);
             return tabela;
         }
-        public ModeloProduto CarregaModeloProduto(int codigo)
+        public ModelProduto CarregaModeloProduto(int codigo)
         {
-            ModeloProduto modelo = new ModeloProduto();
+            ModelProduto modelo = new ModelProduto();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
             cmd.CommandText = "Select * from pro_produto where pro_cod = @codigo";
@@ -152,14 +153,12 @@ namespace DAL
                 modelo.ProCod = Convert.ToInt32(registro["pro_cod"]);
                 modelo.ProNome = Convert.ToString(registro["pro_nome"]);
                 modelo.ProDescricao = Convert.ToString(registro["pro_descricao"]);
+                modelo.ProValorVenda = Convert.ToDouble(registro["pro_valor_venda"]);
                 try
                 {
                     modelo.ProFoto = (byte[])registro["pro_foto"];
                 }
-                catch { }                
-                modelo.ProValorPago = Convert.ToDouble (registro["pro_valor_pago"]);
-                modelo.ProValorVenda = Convert.ToDouble(registro["pro_valor_venda"]);
-                modelo.ProQtde = Convert.ToDouble(registro["pro_qtde"]);
+                catch { }
                 modelo.ProCodUnidadeMedida = Convert.ToInt32(registro["pro_cod_und_medida"]);
                 modelo.ProCodCategoria = Convert.ToInt32(registro["pro_cod_categoria"]);
                 modelo.ProCodSubCategoria = Convert.ToInt32(registro["pro_cod_subcategoria"]);

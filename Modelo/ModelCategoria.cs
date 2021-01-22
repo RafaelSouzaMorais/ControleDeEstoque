@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modelo
+namespace Model
 {
-    public class ModeloCategoria
+    public class ModelCategoria
     {
-        public ModeloCategoria()
+        public ModelCategoria()
         {
             CatCod = 0;
             CatNome = "";
         }
 
-        public ModeloCategoria(int catCod, string catNome)
+        public ModelCategoria(int catCod, string catNome)
         {
             CatCod = catCod;
             CatNome = catNome;

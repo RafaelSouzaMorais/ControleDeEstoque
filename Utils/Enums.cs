@@ -14,5 +14,10 @@ namespace Utils
             Alterar,
             Excluir
         };
+        public enum TipoAberturaInterface
+        {
+            search,
+            menu
+        };
     }
 }

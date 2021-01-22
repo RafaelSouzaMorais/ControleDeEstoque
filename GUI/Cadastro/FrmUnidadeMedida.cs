@@ -2,7 +2,7 @@
 using DAL;
 using GUI.Modelos;
 using GUI.Popup.Cadastro;
-using Modelo;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,13 +26,13 @@ namespace GUI.Cadastro
             try
             {
                 DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
-                BusinessUnidadeMedida BCategoria = new BusinessUnidadeMedida(conexao);
-                ModeloUnidadeMedida modelo = new ModeloUnidadeMedida();
+                BusinessUnidadeMedida BUnidadeMedida = new BusinessUnidadeMedida(conexao);
+                ModelUnidadeMedida modelo = new ModelUnidadeMedida();
                 modelo.UmedNome = Convert.ToString(tboxUnidadeMedida.Text);
 
                 if (operacao.Equals(TipoOperacaoRegistro.Inserir))
                 {
-                    BCategoria.Incluir(modelo);
+                    BUnidadeMedida.Incluir(modelo);
                     MessageBox.Show("Inserção feita com sucesso!");
                     tboxCodigo.Text = Convert.ToString(modelo.UmedCod);
 
@@ -40,7 +40,7 @@ namespace GUI.Cadastro
                 else
                 {
                     modelo.UmedCod = Convert.ToInt32(tboxCodigo.Text);
-                    BCategoria.Alterar(modelo);
+                    BUnidadeMedida.Alterar(modelo);
                     MessageBox.Show("Cadastro alterado com sucesso!");
 
                 }
@@ -55,13 +55,13 @@ namespace GUI.Cadastro
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaUnidadeMedida frm = new FrmPopupConsultaUnidadeMedida();
+            FrmPopupConsultaUnidadeMedida frm = new FrmPopupConsultaUnidadeMedida(TipoAberturaInterface.search);
             frm.ShowDialog();
             if (frm.retorno.Count > 0)
             {
                 DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                 BusinessUnidadeMedida BUnidadeMedida = new BusinessUnidadeMedida(conexao);
-                ModeloUnidadeMedida modelo = BUnidadeMedida.CarregaModeloUnidadeMedida(Convert.ToInt32(frm.retorno["Código"]));
+                ModelUnidadeMedida modelo = BUnidadeMedida.CarregaModeloUnidadeMedida(Convert.ToInt32(frm.retorno["Código"]));
                 tboxCodigo.Text = Convert.ToString(modelo.UmedCod);
                 tboxUnidadeMedida.Text = modelo.UmedNome;
                 ControleBotoes("AEC");
@@ -83,7 +83,7 @@ namespace GUI.Cadastro
                 {
                     DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                     BusinessUnidadeMedida BUnidadeMedida = new BusinessUnidadeMedida(conexao);
-                    ModeloUnidadeMedida modelo = new ModeloUnidadeMedida(Convert.ToInt32(tboxCodigo.Text), Convert.ToString(tboxUnidadeMedida.Text));
+                    ModelUnidadeMedida modelo = new ModelUnidadeMedida(Convert.ToInt32(tboxCodigo.Text), Convert.ToString(tboxUnidadeMedida.Text));
                     BUnidadeMedida.Excluir(modelo);
                     MessageBox.Show("Exclusão feita com sucesso!");
                     ControleBotoes("IR");

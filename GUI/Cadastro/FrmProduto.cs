@@ -1,7 +1,10 @@
 ﻿using Business;
 using DAL;
-using Modelo;
+using GUI.Popup.Cadastro;
+using Model;
 using System;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using static Utils.Enums;
 
@@ -24,7 +27,6 @@ namespace GUI.Cadastro
         private void FrmProduto_Load(object sender, EventArgs e)
         {
             RegistrarCampoMonetario(tboxValorVenda);
-            RegistrarCampoMonetario(tboxValorPago);
             RegistrarComboBoxUnidadeMedida();
             RegistrarComboBoxCategoria();
             RegistrarComboBoxSubCategoria();
@@ -88,11 +90,11 @@ namespace GUI.Cadastro
             tboxCodigo.Clear();
             tboxNome.Clear();
             tboxDescricao.Clear();
-            tboxQuantidade.Clear();
-            tboxValorPago.Clear();
+            //tboxQuantidade.Clear();
+            //tboxValorPago.Clear();
             tboxValorVenda.Clear();
-            tboxCodigoBarra.Clear();
-            tboxDataValidade.Clear();
+            //tboxCodigoBarra.Clear();
+            //dtpDataValidade.Value = DateTime.Now;
             LimparFoto(pictImagemProduto);
         }
         public void LimparFoto(PictureBox pictImg)
@@ -107,19 +109,7 @@ namespace GUI.Cadastro
             {
                 DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                 BusinessProduto BProduto = new BusinessProduto(conexao);
-                ModeloProduto modelo = new ModeloProduto();
-
-                modelo.ProNome = Convert.ToString(tboxNome.Text);
-                modelo.ProDescricao = Convert.ToString(tboxDescricao.Text);
-                modelo.ProValorPago = Convert.ToDouble(utilitariosForms.RemoverStringCamposMonetarios(tboxValorPago.Text));
-                modelo.ProValorVenda = Convert.ToDouble(utilitariosForms.RemoverStringCamposMonetarios(tboxValorVenda.Text));
-                modelo.ProQtde = Convert.ToDouble(tboxQuantidade.Text);
-                modelo.ProCodUnidadeMedida = Convert.ToInt32(cboxUnidadeMedida.SelectedValue);
-                modelo.ProCodSubCategoria = Convert.ToInt32(cboxSubCategoria.SelectedValue);
-                modelo.ProCodCategoria = Convert.ToInt32(cboxCategoria.SelectedValue);
-                modelo.ProCodigoBarra = Convert.ToString(tboxCodigoBarra.Text);
-                modelo.CarregaImagem(foto);
-                //modelo.ProDataValidade = Convert.ToDateTime(tboxDataValidade);
+                ModelProduto modelo = CarregaModeloProdutoByForm();
 
                 if (operacao.Equals(TipoOperacaoRegistro.Inserir))
                 {
@@ -142,7 +132,66 @@ namespace GUI.Cadastro
             }
 
         }
+        private ModelProduto CarregaModeloProdutoByForm()
+        {
+            ModelProduto modelo = new ModelProduto();
 
+            modelo.ProNome = Convert.ToString(tboxNome.Text);
+            modelo.ProDescricao = Convert.ToString(tboxDescricao.Text);
+            //modelo.ProValorPago = Convert.ToDouble(utilitariosForms.RemoverStringCamposMonetarios(tboxValorPago.Text));
+            modelo.ProValorVenda = Convert.ToDouble(utilitariosForms.RemoverStringCamposMonetarios(tboxValorVenda.Text));
+            //modelo.ProQtde = Convert.ToDouble(tboxQuantidade.Text);
+            modelo.ProCodUnidadeMedida = Convert.ToInt32(cboxUnidadeMedida.SelectedValue);
+            modelo.ProCodSubCategoria = Convert.ToInt32(cboxSubCategoria.SelectedValue);
+            modelo.ProCodCategoria = Convert.ToInt32(cboxCategoria.SelectedValue);
+            //modelo.ProCodigoBarra = Convert.ToString(tboxCodigoBarra.Text);
+            if (pictImagemProduto.Image == null)
+            {
+
+                modelo.CarregaImagem(foto);
+            }
+            else
+            {
+                modelo.ProFoto = imageToByteArray(pictImagemProduto.Image);
+            }
+            //modelo.ProDataValidade = dtpDataValidade.Value;
+            return modelo;
+
+        }
+
+        private void DescarregaModeloProdutoInForm(ModelProduto modelo)
+        {
+            tboxCodigo.Text = Convert.ToString(modelo.ProCod);
+            tboxNome.Text = modelo.ProNome;
+            tboxDescricao.Text = modelo.ProDescricao;
+
+            //tboxValorPago.Text = Convert.ToString(modelo.ProValorPago);
+            //utilitariosForms.ConsistenciaCamposMonetarios(tboxValorPago);
+
+            tboxValorVenda.Text = Convert.ToString(modelo.ProValorVenda);
+            utilitariosForms.ConsistenciaCamposMonetarios(tboxValorVenda);
+
+            //tboxQuantidade.Text = Convert.ToString(modelo.ProQtde);
+
+            cboxUnidadeMedida.SelectedValue = modelo.ProCodUnidadeMedida;
+            cboxSubCategoria.SelectedValue = modelo.ProCodSubCategoria;
+            cboxCategoria.SelectedValue = modelo.ProCodCategoria;
+
+            //tboxCodigoBarra.Text = modelo.ProCodigoBarra;
+
+            //carregando byte[] para imagem
+            try
+            {
+                MemoryStream ms = new MemoryStream(modelo.ProFoto);
+                pictImagemProduto.Image = Image.FromStream(ms);
+            }
+            catch
+            {
+
+            }
+            //modelo.ProDataValidade = dtpDataValidade.Value;
+
+        }
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             try
@@ -152,7 +201,7 @@ namespace GUI.Cadastro
                 {
                     DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
                     BusinessProduto BProduto= new BusinessProduto(conexao);
-                    ModeloProduto modelo = new ModeloProduto();
+                    ModelProduto modelo = new ModelProduto();
                     modelo.ProCod = Convert.ToInt32(tboxCodigo.Text);
                     BProduto.Excluir(modelo);
                     MessageBox.Show("Exclusão feita com sucesso!");
@@ -169,15 +218,13 @@ namespace GUI.Cadastro
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            /*FrmPopupConsultaCategoria frm = new FrmPopupConsultaCategoria();
+            FrmPopupConsultaProduto frm = new FrmPopupConsultaProduto(TipoAberturaInterface.search);
             frm.ShowDialog();
             if (frm.retorno.Count > 0)
             {
                 DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
-                BusinessCategoria BCategoria = new BusinessCategoria(conexao);
-                ModeloCategoria modelo = BCategoria.CarregaModeloCategoria(Convert.ToInt32(frm.retorno["Código"]));
-                tboxCodigo.Text = Convert.ToString(modelo.CatCod);
-                tboxNome.Text = modelo.CatNome;
+                BusinessProduto BProdutos = new BusinessProduto(conexao);
+                DescarregaModeloProdutoInForm(BProdutos.CarregaModeloProduto(Convert.ToInt32(frm.retorno["pro_cod"])));
                 ControleBotoes("AEC");
             }
             else
@@ -185,7 +232,14 @@ namespace GUI.Cadastro
                 ControleBotoes("IR");
                 LimparFormulario();
             }
-            frm.Dispose();*/
+            frm.Dispose();
+        }
+
+        public byte[] imageToByteArray(Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.ToArray();
         }
     }
 }

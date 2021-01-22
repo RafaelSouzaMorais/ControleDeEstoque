@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modelo
+namespace Model
 {
-    public class ModeloUnidadeMedida
+    public class ModelUnidadeMedida
     {
-        public ModeloUnidadeMedida()
+        public ModelUnidadeMedida()
         {
             UmedCod = 0;
             UmedNome = "";
         }
 
-        public ModeloUnidadeMedida(int umedCod, string umedNome)
+        public ModelUnidadeMedida(int umedCod, string umedNome)
         {
             UmedCod = umedCod;
             UmedNome = umedNome;
