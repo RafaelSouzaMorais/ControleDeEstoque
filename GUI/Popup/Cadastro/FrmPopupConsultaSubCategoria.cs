@@ -1,5 +1,6 @@
 ﻿using Business;
 using DAL;
+using GUI.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +12,10 @@ using static Utils.Enums;
 
 namespace GUI.Popup.Cadastro
 {
-    public partial class FrmPopupConsultaSubCategoria : GUI.Modelos.FrmModeloFormularioConsulta
+    public partial class FrmPopupConsultaSubCategoria : FrmModeloFormularioConsulta
     {
-        public FrmPopupConsultaSubCategoria(TipoAberturaInterface tpAbertura)
+        public FrmPopupConsultaSubCategoria(string strConexao, TipoAberturaInterface tpAbertura) : base(strConexao, tpAbertura)
         {
-            tipoAbertura = tpAbertura;
             InitializeComponent();
         }
 
@@ -35,7 +35,7 @@ namespace GUI.Popup.Cadastro
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+            DALConexao conexao = new DALConexao(stringConexaoBD);
             BusinessSubCategoria BSubcategoria = new BusinessSubCategoria(conexao);
             dgvDados.DataSource = BSubcategoria.Localizar(tboxSubcategoria.Text);
         }

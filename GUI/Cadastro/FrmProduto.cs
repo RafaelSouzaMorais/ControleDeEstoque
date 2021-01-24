@@ -13,7 +13,7 @@ namespace GUI.Cadastro
     public partial class FrmProduto : GUI.Modelos.FrmModeloFormularioCadastro
     {
         private string foto = string.Empty;
-        public FrmProduto()
+        public FrmProduto(string strConexao) : base(strConexao)
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace GUI.Cadastro
         }
         private void RegistrarComboBoxUnidadeMedida()
         {
-            DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+            DALConexao conexao = new DALConexao(stringConexaoBD);
             BusinessUnidadeMedida BUnidadeMedida = new BusinessUnidadeMedida(conexao);
             cboxUnidadeMedida.DataSource = BUnidadeMedida.Localizar("");
             cboxUnidadeMedida.DisplayMember = "umed_nome";
@@ -41,7 +41,7 @@ namespace GUI.Cadastro
         }
         private void RegistrarComboBoxCategoria()
         {
-            DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+            DALConexao conexao = new DALConexao(stringConexaoBD);
             BusinessCategoria BCategoria = new BusinessCategoria(conexao);
             cboxCategoria.DataSource = BCategoria.Localizar("");
             cboxCategoria.DisplayMember = "cat_nome";
@@ -50,7 +50,7 @@ namespace GUI.Cadastro
         private void RegistrarComboBoxSubCategoria()
         {
             int codCategoria;
-            DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+            DALConexao conexao = new DALConexao(stringConexaoBD);
             BusinessSubCategoria BSubCategoria = new BusinessSubCategoria(conexao);
             try
             {
@@ -107,7 +107,7 @@ namespace GUI.Cadastro
         {
             try
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessProduto BProduto = new BusinessProduto(conexao);
                 ModelProduto modelo = CarregaModeloProdutoByForm();
 
@@ -197,7 +197,7 @@ namespace GUI.Cadastro
                 DialogResult resposta = MessageBox.Show("Deseja realmente excluir o registro?", "Aviso", MessageBoxButtons.YesNo);
                 if (resposta.ToString().Equals("Yes"))
                 {
-                    DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                    DALConexao conexao = new DALConexao(stringConexaoBD);
                     BusinessProduto BProduto= new BusinessProduto(conexao);
                     ModelProduto modelo = new ModelProduto();
                     modelo.ProCod = Convert.ToInt32(tboxCodigo.Text);
@@ -216,11 +216,11 @@ namespace GUI.Cadastro
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaProduto frm = new FrmPopupConsultaProduto(TipoAberturaInterface.search);
+            FrmPopupConsultaProduto frm = new FrmPopupConsultaProduto(stringConexaoBD, TipoAberturaInterface.search);
             frm.ShowDialog();
             if (frm.retorno.Count > 0)
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessProduto BProdutos = new BusinessProduto(conexao);
                 DescarregaModeloProdutoInForm(BProdutos.CarregaModeloProduto(Convert.ToInt32(frm.retorno["pro_cod"])));
                 ControleBotoes("AEC");

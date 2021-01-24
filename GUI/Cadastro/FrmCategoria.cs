@@ -1,4 +1,4 @@
-﻿using Business;
+﻿ using Business;
 using DAL;
 using GUI.Modelos;
 using GUI.Popup.Cadastro;
@@ -16,7 +16,7 @@ namespace GUI.Cadastro
 {
     public partial class FrmCategoria : FrmModeloFormularioCadastro
     {
-        public FrmCategoria()
+        public FrmCategoria(string strConexao) : base(strConexao)
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace GUI.Cadastro
                 DialogResult resposta = MessageBox.Show("Deseja realmente excluir o registro?","Aviso",MessageBoxButtons.YesNo);
                 if(resposta.ToString().Equals("Yes"))
                 {                    
-                    DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                    DALConexao conexao = new DALConexao(stringConexaoBD);
                     BusinessCategoria BCategoria = new BusinessCategoria(conexao);
                     ModelCategoria modelo = new ModelCategoria(Convert.ToInt32(tboxCodigo.Text), Convert.ToString(tboxNome.Text));
                     BCategoria.Excluir(modelo);
@@ -54,7 +54,7 @@ namespace GUI.Cadastro
         {
             try
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessCategoria BCategoria = new BusinessCategoria(conexao);
                 ModelCategoria modelo = new ModelCategoria();
                 modelo.CatNome = Convert.ToString(tboxNome.Text);
@@ -84,11 +84,11 @@ namespace GUI.Cadastro
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaCategoria frm = new FrmPopupConsultaCategoria(TipoAberturaInterface.search);
+            FrmPopupConsultaCategoria frm = new FrmPopupConsultaCategoria(stringConexaoBD, TipoAberturaInterface.search);
             frm.ShowDialog();
             if(frm.retorno.Count > 0)
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessCategoria BCategoria = new BusinessCategoria(conexao);
                 ModelCategoria modelo = BCategoria.CarregaModeloCategoria(Convert.ToInt32(frm.retorno["Código"]));
                 tboxCodigo.Text = Convert.ToString(modelo.CatCod);

@@ -102,10 +102,10 @@ namespace Business
             //    msgErro = "A Subcategoria do Produto é de preenchimento obrigatório.";
             //    return false;
             //}
-            //if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.ProCod <= 0)
-            //{
-            //    throw new Exception("O código informado é inválido");
-            //}
+            if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.EstqCod <= 0)
+            {
+                throw new Exception("O código informado é inválido");
+            }
             return true;
         }
     }

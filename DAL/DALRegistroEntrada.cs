@@ -47,7 +47,7 @@ namespace DAL
             }
             catch /*(Exception erro)*/
             {
-                throw new Exception("Erro na Inclusão de produto.");
+                throw new Exception("Erro na Inclusão de Registro de Entrada.");
             }
             finally
             {

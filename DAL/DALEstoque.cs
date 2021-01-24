@@ -72,7 +72,7 @@ namespace DAL
             }
             catch (Exception erro)
             {
-                throw new Exception("Erro na edição do Produto: " + erro.Message);
+                throw new Exception("Erro na Edição do Estoque: " + erro.Message);
             }
             finally
             {
@@ -112,7 +112,7 @@ namespace DAL
             ModelEstoque modelo = new ModelEstoque();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
-            cmd.CommandText = "Select * from pro_produto where pro_cod = @codigo";
+            cmd.CommandText = "Select * from estq_estoque where estq_cod = @codigo";
             cmd.Parameters.AddWithValue("@codigo", codigo);
             _conexao.Conectar();
             SqlDataReader registro = cmd.ExecuteReader();

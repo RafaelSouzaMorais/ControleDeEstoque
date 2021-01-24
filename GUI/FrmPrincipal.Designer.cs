@@ -49,6 +49,9 @@
             this.registroDeSaídaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beckupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +63,7 @@
             this.cadastroToolStripMenuItem,
             this.movimentaçãoToolStripMenuItem,
             this.ferramentasToolStripMenuItem,
+            this.configuraçãoToolStripMenuItem,
             this.sobreToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -189,14 +193,14 @@
             // registroDeEntradaToolStripMenuItem
             // 
             this.registroDeEntradaToolStripMenuItem.Name = "registroDeEntradaToolStripMenuItem";
-            this.registroDeEntradaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.registroDeEntradaToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.registroDeEntradaToolStripMenuItem.Text = "Registro de Entrada";
             this.registroDeEntradaToolStripMenuItem.Click += new System.EventHandler(this.registroDeEntradaToolStripMenuItem_Click);
             // 
             // registroDeSaídaToolStripMenuItem
             // 
             this.registroDeSaídaToolStripMenuItem.Name = "registroDeSaídaToolStripMenuItem";
-            this.registroDeSaídaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.registroDeSaídaToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.registroDeSaídaToolStripMenuItem.Text = "Registro de Saída";
             // 
             // ferramentasToolStripMenuItem
@@ -210,6 +214,28 @@
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
             this.sobreToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.sobreToolStripMenuItem.Text = "Sobre";
+            // 
+            // configuraçãoToolStripMenuItem
+            // 
+            this.configuraçãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bancoDeDadosToolStripMenuItem,
+            this.beckupToolStripMenuItem});
+            this.configuraçãoToolStripMenuItem.Name = "configuraçãoToolStripMenuItem";
+            this.configuraçãoToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.configuraçãoToolStripMenuItem.Text = "Configuração";
+            // 
+            // bancoDeDadosToolStripMenuItem
+            // 
+            this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
+            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bancoDeDadosToolStripMenuItem.Text = "Banco de dados";
+            this.bancoDeDadosToolStripMenuItem.Click += new System.EventHandler(this.bancoDeDadosToolStripMenuItem_Click);
+            // 
+            // beckupToolStripMenuItem
+            // 
+            this.beckupToolStripMenuItem.Name = "beckupToolStripMenuItem";
+            this.beckupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.beckupToolStripMenuItem.Text = "Beckup";
             // 
             // FrmPrincipal
             // 
@@ -253,5 +279,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem registroDeEntradaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroDeSaídaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuraçãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bancoDeDadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem beckupToolStripMenuItem;
     }
 }

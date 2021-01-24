@@ -17,9 +17,8 @@ namespace DAL
 
         public DALConexao(String dadosConexao)
         {
-            this._conexao = new SqlConnection();
+            this._conexao = new SqlConnection(dadosConexao);
             this.StringConexao = dadosConexao;
-            this._conexao.ConnectionString = dadosConexao;
         }
 
         public void Conectar()
@@ -30,6 +29,20 @@ namespace DAL
         public void Desconectar()
         {
             this._conexao.Close();
+        }
+
+        public bool TesteConexao()
+        {
+            try
+            {
+                _conexao.Open();
+                _conexao.Close();
+                return true;
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
         }
     }
 }

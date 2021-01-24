@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,14 @@ namespace GUI.Modelos
     public partial class FrmModeloFormularioCadastro : Form
     {
         public TipoOperacaoRegistro operacao;
-
         public UtilitariosForms utilitariosForms;
-        public FrmModeloFormularioCadastro()
+        public DadosDaConexao dadosDaConexao;
+        public string stringConexaoBD;
+
+        public FrmModeloFormularioCadastro(string strConexao)
         {
+            this.stringConexaoBD = strConexao;
+
             InitializeComponent();
             utilitariosForms = new UtilitariosForms();
         }

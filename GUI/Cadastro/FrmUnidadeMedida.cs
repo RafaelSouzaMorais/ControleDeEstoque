@@ -16,7 +16,7 @@ namespace GUI.Cadastro
 {
     public partial class FrmUnidadeMedida : FrmModeloFormularioCadastro
     {
-        public FrmUnidadeMedida()
+        public FrmUnidadeMedida(string strConexao) : base(strConexao)
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace GUI.Cadastro
         {
             try
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessUnidadeMedida BUnidadeMedida = new BusinessUnidadeMedida(conexao);
                 ModelUnidadeMedida modelo = new ModelUnidadeMedida();
                 modelo.UmedNome = Convert.ToString(tboxUnidadeMedida.Text);
@@ -55,11 +55,11 @@ namespace GUI.Cadastro
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaUnidadeMedida frm = new FrmPopupConsultaUnidadeMedida(TipoAberturaInterface.search);
+            FrmPopupConsultaUnidadeMedida frm = new FrmPopupConsultaUnidadeMedida(stringConexaoBD, TipoAberturaInterface.search);
             frm.ShowDialog();
             if (frm.retorno.Count > 0)
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessUnidadeMedida BUnidadeMedida = new BusinessUnidadeMedida(conexao);
                 ModelUnidadeMedida modelo = BUnidadeMedida.CarregaModeloUnidadeMedida(Convert.ToInt32(frm.retorno["Código"]));
                 tboxCodigo.Text = Convert.ToString(modelo.UmedCod);
@@ -81,7 +81,7 @@ namespace GUI.Cadastro
                 DialogResult resposta = MessageBox.Show("Deseja realmente excluir o registro?", "Aviso", MessageBoxButtons.YesNo);
                 if (resposta.ToString().Equals("Yes"))
                 {
-                    DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                    DALConexao conexao = new DALConexao(stringConexaoBD);
                     BusinessUnidadeMedida BUnidadeMedida = new BusinessUnidadeMedida(conexao);
                     ModelUnidadeMedida modelo = new ModelUnidadeMedida(Convert.ToInt32(tboxCodigo.Text), Convert.ToString(tboxUnidadeMedida.Text));
                     BUnidadeMedida.Excluir(modelo);

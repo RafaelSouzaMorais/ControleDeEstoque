@@ -103,6 +103,7 @@
             // 
             this.tboxNome.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxNome.Location = new System.Drawing.Point(127, 53);
+            this.tboxNome.MaxLength = 95;
             this.tboxNome.Name = "tboxNome";
             this.tboxNome.Size = new System.Drawing.Size(281, 31);
             this.tboxNome.TabIndex = 3;

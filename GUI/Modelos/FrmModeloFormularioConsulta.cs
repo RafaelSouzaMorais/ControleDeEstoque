@@ -16,9 +16,11 @@ namespace GUI.Modelos
         
         public TipoAberturaInterface tipoAbertura = TipoAberturaInterface.menu;
         public Dictionary<string, object> retorno = new Dictionary<string, object>();
-
-        public FrmModeloFormularioConsulta()
-        {            
+        public string stringConexaoBD;
+        public FrmModeloFormularioConsulta(string strConexao, TipoAberturaInterface tpAbertura)
+        {
+            stringConexaoBD = strConexao;
+            tipoAbertura = tpAbertura;
             InitializeComponent();
         }
 

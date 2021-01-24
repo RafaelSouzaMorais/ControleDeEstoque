@@ -16,7 +16,7 @@ namespace GUI.Movimentação
 {
     public partial class FrmRegistroEntrada : GUI.Modelos.FrmModeloFormularioCadastro
     {
-        public FrmRegistroEntrada()
+        public FrmRegistroEntrada(string strConexao) : base(strConexao)
         {
             InitializeComponent();
         }
@@ -30,11 +30,11 @@ namespace GUI.Movimentação
 
         private void btnPesquisarProduto_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaProduto frm = new FrmPopupConsultaProduto(TipoAberturaInterface.search);
+            FrmPopupConsultaProduto frm = new FrmPopupConsultaProduto(stringConexaoBD, TipoAberturaInterface.search);
             frm.ShowDialog();
             if (frm.retorno.Count > 0)
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessProduto BProdutos = new BusinessProduto(conexao);
                 DescarregaModeloProdutoInForm(BProdutos.CarregaModeloProduto(Convert.ToInt32(frm.retorno["pro_cod"])));
             }
@@ -49,7 +49,7 @@ namespace GUI.Movimentação
         {
             try
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessRegistroEntrada BRegistroEntrada = new BusinessRegistroEntrada(conexao);
                 BusinessEstoque BEstoque = new BusinessEstoque(conexao);
                 ModelRegistroEntrada modeloRegistroEntrada = CarregaModeloRegistroEntradaByForm();
@@ -92,6 +92,7 @@ namespace GUI.Movimentação
         {
             throw new NotImplementedException();
         }
+        
         private ModelEstoque CarregaModeloEstoqueByForm()
         {
             throw new NotImplementedException();

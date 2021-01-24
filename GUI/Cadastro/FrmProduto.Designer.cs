@@ -173,6 +173,7 @@
             this.tboxCodigo.Enabled = false;
             this.tboxCodigo.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxCodigo.Location = new System.Drawing.Point(213, 7);
+            this.tboxCodigo.MaxLength = 95;
             this.tboxCodigo.Name = "tboxCodigo";
             this.tboxCodigo.Size = new System.Drawing.Size(100, 31);
             this.tboxCodigo.TabIndex = 1;
@@ -181,6 +182,7 @@
             // 
             this.tboxNome.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxNome.Location = new System.Drawing.Point(213, 52);
+            this.tboxNome.MaxLength = 95;
             this.tboxNome.Name = "tboxNome";
             this.tboxNome.Size = new System.Drawing.Size(202, 31);
             this.tboxNome.TabIndex = 2;
@@ -191,6 +193,7 @@
             this.tboxDescricao.Location = new System.Drawing.Point(213, 99);
             this.tboxDescricao.Multiline = true;
             this.tboxDescricao.Name = "tboxDescricao";
+            this.tboxDescricao.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tboxDescricao.Size = new System.Drawing.Size(202, 104);
             this.tboxDescricao.TabIndex = 3;
             // 
@@ -286,6 +289,7 @@
             // 
             this.tboxValorVenda.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxValorVenda.Location = new System.Drawing.Point(213, 370);
+            this.tboxValorVenda.MaxLength = 15;
             this.tboxValorVenda.Name = "tboxValorVenda";
             this.tboxValorVenda.Size = new System.Drawing.Size(100, 31);
             this.tboxValorVenda.TabIndex = 6;

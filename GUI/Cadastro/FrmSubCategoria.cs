@@ -15,7 +15,7 @@ namespace GUI.Cadastro
 {
     public partial class FrmSubCategoria : GUI.Modelos.FrmModeloFormularioCadastro
     {
-        public FrmSubCategoria()
+        public FrmSubCategoria(string strConexao) : base(strConexao)
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace GUI.Cadastro
 
         private void PopulaComboBox()
         {
-            DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+            DALConexao conexao = new DALConexao(stringConexaoBD);
             BusinessCategoria BCategoria = new BusinessCategoria(conexao);
             cboxCatCod.DataSource = BCategoria.Localizar("");
             cboxCatCod.DisplayMember = "cat_nome";
@@ -42,11 +42,11 @@ namespace GUI.Cadastro
 
         private void btnRecuperar_Click(object sender, EventArgs e)
         {
-            FrmPopupConsultaSubCategoria frm = new FrmPopupConsultaSubCategoria(TipoAberturaInterface.search);
+            FrmPopupConsultaSubCategoria frm = new FrmPopupConsultaSubCategoria(stringConexaoBD, TipoAberturaInterface.search);
             frm.ShowDialog();
             if (frm.retorno.Count > 0)
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessSubCategoria BSubcategoria = new BusinessSubCategoria(conexao);
                 ModelSubCategoria modelo = BSubcategoria.CarregaModeloSubCategoria(Convert.ToInt32(frm.retorno["Código"]));
                 tboxCodigo.Text = Convert.ToString(modelo.ScatCod);
@@ -69,7 +69,7 @@ namespace GUI.Cadastro
                 DialogResult resposta = MessageBox.Show("Deseja realmente excluir o registro?", "Aviso", MessageBoxButtons.YesNo);
                 if (resposta.ToString().Equals("Yes"))
                 {
-                    DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                    DALConexao conexao = new DALConexao(stringConexaoBD);
                     BusinessSubCategoria BSubCategoria = new BusinessSubCategoria(conexao);
                     ModelSubCategoria modelo = new ModelSubCategoria();
                     modelo.ScatCod = Convert.ToInt32(tboxCodigo.Text);
@@ -93,7 +93,7 @@ namespace GUI.Cadastro
         {
             try
             {
-                DALConexao conexao = new DALConexao(DadosDaConexao.StringDeConexao);
+                DALConexao conexao = new DALConexao(stringConexaoBD);
                 BusinessSubCategoria BSubCategoria = new BusinessSubCategoria(conexao);
                 ModelSubCategoria modelo = new ModelSubCategoria();
                 modelo.ScatNome = Convert.ToString(tboxNomeSubCat.Text);

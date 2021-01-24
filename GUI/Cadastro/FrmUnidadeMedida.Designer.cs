@@ -90,6 +90,7 @@
             // 
             this.tboxUnidadeMedida.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxUnidadeMedida.Location = new System.Drawing.Point(208, 53);
+            this.tboxUnidadeMedida.MaxLength = 95;
             this.tboxUnidadeMedida.Name = "tboxUnidadeMedida";
             this.tboxUnidadeMedida.Size = new System.Drawing.Size(100, 31);
             this.tboxUnidadeMedida.TabIndex = 2;

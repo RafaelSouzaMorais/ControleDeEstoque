@@ -113,6 +113,7 @@
             // 
             this.tboxNomeSubCat.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxNomeSubCat.Location = new System.Drawing.Point(275, 81);
+            this.tboxNomeSubCat.MaxLength = 95;
             this.tboxNomeSubCat.Name = "tboxNomeSubCat";
             this.tboxNomeSubCat.Size = new System.Drawing.Size(250, 31);
             this.tboxNomeSubCat.TabIndex = 4;

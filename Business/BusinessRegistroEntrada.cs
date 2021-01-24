@@ -73,40 +73,10 @@ namespace Business
             //    msgErro = "O nome do Produto é de preenchimento obrigatório.";
             //    return false;
             //}
-            //if (modelo.ProDescricao.Trim().Length == 0)
-            //{
-            //    msgErro = "A descrição do Produto é de preenchimento obrigatório.";
-            //    return false;
-            //}
-            ////if (modelo.ProValorVenda <= 0)
-            ////{
-            ////    msgErro = "O Valor de venda do Produto é de preenchimento obrigatório.";
-            ////    return false;
-            ////}
-            ////if (modelo.ProQtde < 0)
-            ////{
-            ////    msgErro = "A quantidade do Produto não pode ser negativa.";
-            ////    return false;
-            ////}
-            //if (modelo.ProCodUnidadeMedida <= 0)
-            //{
-            //    msgErro = "A Unidade de Medidado Produto é de preenchimento obrigatório.";
-            //    return false;
-            //}
-            //if (modelo.ProCodCategoria <= 0)
-            //{
-            //    msgErro = "A Categoria do Produto é de preenchimento obrigatório.";
-            //    return false;
-            //}
-            //if (modelo.ProCodSubCategoria <= 0)
-            //{
-            //    msgErro = "A Subcategoria do Produto é de preenchimento obrigatório.";
-            //    return false;
-            //}
-            //if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.ProCod <= 0)
-            //{
-            //    throw new Exception("O código informado é inválido");
-            //}
+            if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.RgeCod <= 0)
+            {
+                throw new Exception("O código informado é inválido");
+            }
             return true;
         }
     }
