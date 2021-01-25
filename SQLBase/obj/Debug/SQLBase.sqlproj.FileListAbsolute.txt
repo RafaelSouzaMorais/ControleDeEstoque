@@ -1,0 +1,9 @@
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\SQLBase\bin\Debug\SQLBase.dacpac
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\SQLBase\bin\Debug\SQLBase.dll
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\SQLBase\bin\Debug\SQLBase.pdb
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\SQLBase\obj\Debug\Model.xml
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\SQLBase\obj\Debug\refactor.xml
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\SQLBase\obj\Debug\postdeploy.sql
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\SQLBase\obj\Debug\predeploy.sql
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\SQLBase\obj\Debug\SQLBase.dll
+C:\Users\PICHAU\Documents\GitHub\ControleDeEstoque\SQLBase\obj\Debug\SQLBase.pdb

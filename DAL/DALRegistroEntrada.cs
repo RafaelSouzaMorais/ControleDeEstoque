@@ -33,19 +33,18 @@ namespace DAL
                                  VALUES
                                         (@codigoEstoque,
 		                                @quantidade,
-		                                @dataRegistro,
+		                                { fn NOW() },
 		                                @codigoUsuario,
 		                                @valorPago)
                                    select @@IDENTITY;";
                 cmd.Parameters.AddWithValue("@codigoEstoque", modelo.RgeCodEstoque);
                 cmd.Parameters.AddWithValue("@quantidade", modelo.RgeQuantidade);
-                cmd.Parameters.AddWithValue("@dataRegistro", modelo.RgeDataRegistro);
                 cmd.Parameters.AddWithValue("@codigoUsuario", modelo.RgeCodUsuario);
                 cmd.Parameters.AddWithValue("@valorPago", modelo.RgeValorPago);
                 _conexao.Conectar();
                 modelo.RgeCod = Convert.ToInt32(cmd.ExecuteScalar());
             }
-            catch /*(Exception erro)*/
+            catch
             {
                 throw new Exception("Erro na Inclusão de Registro de Entrada.");
             }

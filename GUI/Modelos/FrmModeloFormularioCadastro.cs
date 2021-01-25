@@ -23,9 +23,16 @@ namespace GUI.Modelos
         public FrmModeloFormularioCadastro(string strConexao)
         {
             this.stringConexaoBD = strConexao;
-
-            InitializeComponent();
             utilitariosForms = new UtilitariosForms();
+            InitializeComponent();
+
+        }
+        /// <summary>
+        /// so existe pra evitar erro do designer , não deve ser usado
+        /// </summary>
+        public FrmModeloFormularioCadastro()
+        {
+            InitializeComponent();
         }
 
         /// <summary>
@@ -136,8 +143,28 @@ namespace GUI.Modelos
         }
         public virtual void RegistrarCampoMonetario(TextBox tboxValor)
         {
-            tboxValor.KeyPress += delegate (object sender, KeyPressEventArgs e) { utilitariosForms.ControleCamposMonetarios(sender, e, tboxValor); };
-            tboxValor.Leave += delegate (object sender, EventArgs e) { utilitariosForms.ConsistenciaCamposMonetarios(tboxValor); };
+            tboxValor.KeyPress += delegate (object sender, KeyPressEventArgs e) { utilitariosForms.ControleCamposNumericos(sender, e, tboxValor); };
+            tboxValor.Leave += delegate (object sender, EventArgs e) { 
+                utilitariosForms.ConsistenciaCamposMonetarios(tboxValor);
+                EventLeaveCampoMonetario(tboxValor);
+            };
+        }
+        public virtual void RegistrarCampoNumerico(TextBox tboxValor)
+        {
+            tboxValor.KeyPress += delegate (object sender, KeyPressEventArgs e) { utilitariosForms.ControleCamposNumericos(sender, e, tboxValor); };
+            tboxValor.Leave += delegate (object sender, EventArgs e) { 
+                utilitariosForms.ConsistenciaCamposNumericos(tboxValor);
+                EventLeaveCampoNumerico(tboxValor);
+            };
+        }
+
+        public virtual void EventLeaveCampoMonetario(TextBox tboxValor)
+        {
+
+        }
+        public virtual void EventLeaveCampoNumerico(TextBox tboxValor)
+        {
+
         }
     }
 }

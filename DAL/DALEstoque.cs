@@ -24,16 +24,16 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = _conexao.ObjetoConexao;
                 cmd.CommandText = @"INSERT INTO estq_estoque
-                                       (estq_data_validade,
-                                       estq_cod_produto,
-                                       estq_quantidade,
-                                       estq_codigo_barra)
-                                 VALUES
-                                       (@dataValidade,
-		                               @codigoProduto,
-		                               @quantidade,
-		                               @codigoBarra)
-                                   select @@IDENTITY;";
+                                                (estq_data_validade,
+                                                 estq_cod_produto,
+                                                 estq_quantidade,
+                                                 estq_codigo_barra)
+                                    VALUES      (@dataValidade,
+                                                 @codigoProduto,
+                                                 @quantidade,
+                                                 @codigoBarra)
+
+                                    SELECT @@IDENTITY; ";
                 cmd.Parameters.AddWithValue("@dataValidade", modelo.EstqDataValidade);
                 cmd.Parameters.AddWithValue("@codigoProduto", modelo.EstqCodProduto);
                 cmd.Parameters.AddWithValue("@quantidade", modelo.EstqQuantidade);
@@ -57,11 +57,11 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = _conexao.ObjetoConexao;
                 cmd.CommandText = @"UPDATE estq_estoque
-                                SET estq_data_validade = @dataValidade,
-                                    estq_cod_produto = @codigoProduto,
-                                    estq_quantidade = @quantidade,
-                                    estq_codigo_barra = @codigoBarra
-                                WHERE estq_cod = @codigo";
+                                    SET    estq_data_validade = @dataValidade,
+                                            estq_cod_produto = @codigoProduto,
+                                            estq_quantidade = @quantidade,
+                                            estq_codigo_barra = @codigoBarra
+                                    WHERE  estq_cod = @codigo ";
                 cmd.Parameters.AddWithValue("@dataValidade", modelo.EstqDataValidade);
                 cmd.Parameters.AddWithValue("@codigoProduto", modelo.EstqCodProduto);
                 cmd.Parameters.AddWithValue("@quantidade", modelo.EstqQuantidade);
@@ -112,7 +112,9 @@ namespace DAL
             ModelEstoque modelo = new ModelEstoque();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
-            cmd.CommandText = "Select * from estq_estoque where estq_cod = @codigo";
+            cmd.CommandText = @"SELECT *
+                                FROM estq_estoque
+                                WHERE estq_cod = @codigo";
             cmd.Parameters.AddWithValue("@codigo", codigo);
             _conexao.Conectar();
             SqlDataReader registro = cmd.ExecuteReader();
@@ -129,5 +131,53 @@ namespace DAL
             _conexao.Desconectar();
             return modelo;
         }
+        public int RecuperaCodEstoque(ModelEstoque modelo)
+        {
+            int codEstoque;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = _conexao.ObjetoConexao;
+            cmd.CommandText = $@"SELECT estq_cod
+                                FROM   estq_estoque
+                                WHERE  Cast(estq_data_validade AS DATE) = Cast('{modelo.EstqDataValidade.ToString()}' AS DATE)
+                                       AND estq_codigo_barra = '{modelo.EstqCodigoBarra}'
+                                       AND estq_cod_produto = {modelo.EstqCodProduto}";
+            //cmd.Parameters.AddWithValue("@dataValidade", modelo.EstqDataValidade.ToString());
+            //cmd.Parameters.AddWithValue("@codigoBarra", modelo.EstqCodigoBarra);
+            //cmd.Parameters.AddWithValue("@codProduto", modelo.EstqCodProduto);
+            _conexao.Conectar();
+            SqlDataReader registro = cmd.ExecuteReader();
+            if (registro.HasRows)
+            {
+                registro.Read();
+                codEstoque = Convert.ToInt32(registro["estq_cod"]);
+                _conexao.Desconectar();
+                return codEstoque;
+            }
+            _conexao.Desconectar();
+            return 0;
+        }
+
+        public int RecuperaQuantidadeEstoque(int codEstoque)
+        {
+            int quantidadeEstoque;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = _conexao.ObjetoConexao;
+            cmd.CommandText = @"SELECT estq_quantidade
+                                FROM   estq_estoque
+                                WHERE  estq_cod = @codigo ";
+            cmd.Parameters.AddWithValue("@codigo", codEstoque);
+            _conexao.Conectar();
+            SqlDataReader registro = cmd.ExecuteReader();
+            if (registro.HasRows)
+            {
+                registro.Read();
+                quantidadeEstoque = Convert.ToInt32(registro["estq_quantidade"]);
+                _conexao.Desconectar();
+                return quantidadeEstoque;
+            }
+            _conexao.Desconectar();
+            return 0;
+        }
+
     }
 }

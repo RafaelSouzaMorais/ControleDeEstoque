@@ -21,35 +21,34 @@ namespace Business
         }
         public void Incluir(ModelRegistroEntrada modelo)
         {
+            operacao = TipoOperacaoRegistro.Inserir;
             string msgErro = "";
-            if (ValidaeCampos(modelo, ref msgErro))
-            {
-                DALRegistroEntrada DALObj = new DALRegistroEntrada(_conexao);
-                DALObj.Incluir(modelo);
-            }
-            else
+            if (!ValidaCampos(modelo, ref msgErro))
             {
                 throw new Exception(msgErro);
             }
+            DALRegistroEntrada DALObj = new DALRegistroEntrada(_conexao);
+            DALObj.Incluir(modelo);
+
+
         }
 
         public void Alterar(ModelRegistroEntrada modelo)
         {
             operacao = TipoOperacaoRegistro.Alterar;
             string msgErro = "";
-            if (ValidaeCampos(modelo, ref msgErro))
-            {
-                DALRegistroEntrada DALObj = new DALRegistroEntrada(_conexao);
-                DALObj.Alterar(modelo);
-            }
-            else
+            if (!ValidaCampos(modelo, ref msgErro))
             {
                 throw new Exception(msgErro);
             }
+            DALRegistroEntrada DALObj = new DALRegistroEntrada(_conexao);
+            DALObj.Alterar(modelo);
+
         }
 
         public void Excluir(ModelRegistroEntrada modelo)
         {
+            operacao = TipoOperacaoRegistro.Excluir;
             DALRegistroEntrada DALObj = new DALRegistroEntrada(_conexao);
             DALObj.Excluir(modelo);
         }
@@ -66,7 +65,7 @@ namespace Business
         //    return DALObj.CarregaModeloProduto(codigo);
         //}
 
-        private bool ValidaeCampos(ModelRegistroEntrada modelo, ref string msgErro)
+        private bool ValidaCampos(ModelRegistroEntrada modelo, ref string msgErro)
         {
             //if (modelo.ProNome.Trim().Length == 0)
             //{
@@ -75,7 +74,7 @@ namespace Business
             //}
             if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.RgeCod <= 0)
             {
-                throw new Exception("O código informado é inválido");
+                msgErro = "O código informado é inválido";
             }
             return true;
         }

@@ -6,23 +6,26 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Utils.Enums;
 
 namespace Business
 {
     public class BusinessCategoria
     {
         private DALConexao _conexao;
+        private TipoOperacaoRegistro operacao;
 
-        public BusinessCategoria (DALConexao conexao)
+        public BusinessCategoria(DALConexao conexao)
         {
             _conexao = conexao;
         }
         public void Incluir(ModelCategoria modelo)
         {
-            //Verifica se o nome da categoria está preenchido
-            if(modelo.CatNome.Trim().Length == 0)
+            operacao = TipoOperacaoRegistro.Inserir;
+            string msgErro = "";
+            if (!ValidaCampos(modelo, ref msgErro))
             {
-                throw new Exception("O nome da Categoria é de preenchimento obrigatório");
+                throw new Exception(msgErro);
             }
             DALCategoria DALObj = new DALCategoria(_conexao);
             DALObj.Incluir(modelo);
@@ -30,23 +33,21 @@ namespace Business
 
         public void Alterar(ModelCategoria modelo)
         {
-            //Verifica se o nome da categoria está preenchido
-            if (modelo.CatNome.Trim().Length == 0)
+            operacao = TipoOperacaoRegistro.Alterar;
+            string msgErro = "";
+            if (!ValidaCampos(modelo, ref msgErro))
             {
-                throw new Exception("O nome da Categoria é de preenchimento obrigatório");
-            }
-            if(modelo.CatCod <= 0)
-            {
-                throw new Exception("O código informado é inválido");
+                throw new Exception(msgErro);
             }
             DALCategoria DALObj = new DALCategoria(_conexao);
             DALObj.Alterar(modelo);
         }
-        
+
         public void Excluir(ModelCategoria modelo)
         {
+            operacao = TipoOperacaoRegistro.Excluir;
             /*verifica se existe registro em subcategoria*/
-            if(VerificaRegistroSubCategoria(modelo.CatCod))
+            if (VerificaRegistroSubCategoria(modelo.CatCod))
             {
                 throw new Exception("Não é possivel excluir essa Categoria pois ainda existe Subcategoria cadastrada para ela.");
             }
@@ -80,11 +81,27 @@ namespace Business
         {
             DALSubCategoria DALObj = new DALSubCategoria(_conexao);
             int rowCount = DALObj.RecuperarPorCategoria(valor).Rows.Count;
-            if(rowCount > 0)
+            if (rowCount > 0)
             {
                 return true;
             }
             return false;
+        }
+
+        private bool ValidaCampos(ModelCategoria modelo, ref string msgErro)
+        {
+
+            if (modelo.CatNome.Trim().Length == 0)
+            {
+                msgErro = "O nome da Categoria é de preenchimento obrigatório";
+            }
+
+            if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.CatCod <= 0)
+            {
+                msgErro = "O código informado é inválido";
+            }
+
+            return true;
         }
     }
 }

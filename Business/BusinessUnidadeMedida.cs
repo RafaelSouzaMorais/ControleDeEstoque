@@ -6,12 +6,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Utils.Enums;
 
 namespace Business
 {
     public class BusinessUnidadeMedida
     {
         private DALConexao _conexao;
+        private TipoOperacaoRegistro operacao;
 
         public BusinessUnidadeMedida(DALConexao conexao)
         {
@@ -20,35 +22,39 @@ namespace Business
 
         public void Incluir(ModelUnidadeMedida modelo)
         {
-            //Verifica se o nome da categoria está preenchido
-            if (modelo.UmedNome.Trim().Length == 0)
+            operacao = TipoOperacaoRegistro.Inserir;
+            string msgErro = "";
+
+            if (!ValidaCampos(modelo, ref msgErro))
             {
-                throw new Exception("O nome da Unidade de Medida é de preenchimento obrigatório");
+                throw new Exception(msgErro);
             }
+
+            if (!VerificaUnidadeMedidaExistente(modelo, ref msgErro))
+            {
+                throw new Exception(msgErro);
+            }
+
             DALUnidadeMedida DALObj = new DALUnidadeMedida(_conexao);
-            if(DALObj.ConsultaUnidadeMedidaPorNome(modelo.UmedNome.Trim()))
-            {
-                throw new Exception("A Unidade de Medida já está cadastrado no sistema.");
-            }
             DALObj.Incluir(modelo);
         }
 
         public void Alterar(ModelUnidadeMedida modelo)
         {
-            //Verifica se o nome da categoria está preenchido
-            if (modelo.UmedNome.Trim().Length == 0)
+            operacao = TipoOperacaoRegistro.Alterar;
+            string msgErro = "";
+
+            if (!ValidaCampos(modelo, ref msgErro))
             {
-                throw new Exception("O nome da Unidade de Medida é de preenchimento obrigatório.");
+                throw new Exception(msgErro);
             }
-            if (modelo.UmedCod <= 0)
-            {
-                throw new Exception("O código informado é inválido.");
-            }
+
             DALUnidadeMedida DALObj = new DALUnidadeMedida(_conexao);
             DALObj.Alterar(modelo);
         }
         public void Excluir(ModelUnidadeMedida modelo)
         {
+            operacao = TipoOperacaoRegistro.Excluir;
             DALUnidadeMedida DALObj = new DALUnidadeMedida(_conexao);
             DALObj.Excluir(modelo);
         }
@@ -63,6 +69,32 @@ namespace Business
         {
             DALUnidadeMedida DALObj = new DALUnidadeMedida(_conexao);
             return DALObj.CarregaModeloUnidadeMedida(codigo);
+        }
+
+        public bool VerificaUnidadeMedidaExistente(ModelUnidadeMedida modelo, ref string msgErro)
+        {
+            DALUnidadeMedida DALObj = new DALUnidadeMedida(_conexao);
+            if (DALObj.ConsultaUnidadeMedidaPorNome(modelo.UmedNome.Trim()))
+            {
+                msgErro = "A Unidade de Medida já está cadastrado no sistema.";
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidaCampos(ModelUnidadeMedida modelo, ref string msgErro)
+        {
+            if (modelo.UmedNome.Trim().Length == 0)
+            {
+                msgErro = "O nome da Unidade de Medida é de preenchimento obrigatório";
+            }
+
+            if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.UmedCod <= 0)
+            {
+                msgErro = "O código informado é inválido";
+            }
+
+            return true;
         }
     }
 }

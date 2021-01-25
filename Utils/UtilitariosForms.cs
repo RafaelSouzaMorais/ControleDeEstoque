@@ -9,7 +9,7 @@ namespace Utils
 {
     public class UtilitariosForms
     {
-        public void ControleCamposMonetarios(object sender, KeyPressEventArgs e, TextBox tboxValor)
+        public void ControleCamposNumericos(object sender, KeyPressEventArgs e, TextBox tboxValor)
         {
             if ((e.KeyChar < '0' || e.KeyChar > '9') &&
               (e.KeyChar != ',' && e.KeyChar != '.' &&
@@ -29,6 +29,10 @@ namespace Utils
                     {
                         e.KeyChar = (Char)0;
                     }
+                }
+                else if (e.KeyChar == '-' && tboxValor.Text.Contains('-'))
+                {
+                    e.KeyChar = (Char)0;
                 }
             }
         }
@@ -53,7 +57,8 @@ namespace Utils
             {
                 if ((tboxValor[i] >= '0' &&
                     tboxValor[i] <= '9') ||
-                    tboxValor[i] == ',')
+                    tboxValor[i] == ','  ||
+                    tboxValor[i] == '-')
                 {
                     x += tboxValor[i];
                 }
@@ -61,6 +66,31 @@ namespace Utils
             tboxValor = x;
             return tboxValor;
             //tboxValor.SelectAll();
+        }
+
+        public void ConsistenciaCamposNumericos(TextBox tboxValor)
+        {
+            if (tboxValor.TextLength > 0)
+            {
+                if (tboxValor.Text[0] == ',' && tboxValor.TextLength == 1)
+                {
+                    tboxValor.Text = "0";
+                }
+
+                if (tboxValor.Text[0] == ',')
+                {
+                    tboxValor.Text = "0" + tboxValor.Text;
+                }
+                if (tboxValor.Text[tboxValor.TextLength - 1] == ',')
+                {
+                    tboxValor.Text += "0";
+                }
+                if (tboxValor.Text.Equals("0,0"))
+                {
+                    tboxValor.Text = "0";
+                }
+            }
+
         }
 
     }

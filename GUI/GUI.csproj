@@ -232,8 +232,8 @@
     <None Include="Resources\icons8-ficheiro-de-imagem-64.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\icons8-edit.gif" />
     <Content Include="Resources\icons8-excluir-lixeira-64.png" />
-    <None Include="Resources\Image1.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

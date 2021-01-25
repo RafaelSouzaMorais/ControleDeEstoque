@@ -39,12 +39,14 @@
             this.dtpDataValidade = new System.Windows.Forms.DateTimePicker();
             this.lblDataValidade = new System.Windows.Forms.Label();
             this.gboxProduto = new System.Windows.Forms.GroupBox();
-            this.tboxPctLucro = new System.Windows.Forms.TextBox();
+            this.tboxLucroUnitario = new System.Windows.Forms.TextBox();
             this.tboxValorVenda = new System.Windows.Forms.TextBox();
-            this.lblPctLucro = new System.Windows.Forms.Label();
+            this.lblLucroUnitario = new System.Windows.Forms.Label();
             this.lblValorVenda = new System.Windows.Forms.Label();
             this.pictImagemProduto = new System.Windows.Forms.PictureBox();
             this.btnPesquisarProduto = new System.Windows.Forms.Button();
+            this.lblLucroTotal = new System.Windows.Forms.Label();
+            this.tboxLucroTotal = new System.Windows.Forms.TextBox();
             this.pnDados.SuspendLayout();
             this.pnBotões.SuspendLayout();
             this.gboxProduto.SuspendLayout();
@@ -71,28 +73,31 @@
             // 
             // tboxQuantidade
             // 
-            this.tboxQuantidade.Location = new System.Drawing.Point(165, 328);
+            this.tboxQuantidade.Location = new System.Drawing.Point(165, 323);
+            this.tboxQuantidade.MaxLength = 10;
             this.tboxQuantidade.Name = "tboxQuantidade";
             this.tboxQuantidade.Size = new System.Drawing.Size(135, 31);
             this.tboxQuantidade.TabIndex = 0;
             // 
             // tboxValorPago
             // 
-            this.tboxValorPago.Location = new System.Drawing.Point(165, 379);
+            this.tboxValorPago.Location = new System.Drawing.Point(165, 374);
+            this.tboxValorPago.MaxLength = 10;
             this.tboxValorPago.Name = "tboxValorPago";
             this.tboxValorPago.Size = new System.Drawing.Size(135, 31);
             this.tboxValorPago.TabIndex = 1;
             // 
             // tboxCodigoBarra
             // 
-            this.tboxCodigoBarra.Location = new System.Drawing.Point(527, 328);
+            this.tboxCodigoBarra.Location = new System.Drawing.Point(527, 323);
+            this.tboxCodigoBarra.MaxLength = 50;
             this.tboxCodigoBarra.Name = "tboxCodigoBarra";
             this.tboxCodigoBarra.Size = new System.Drawing.Size(135, 31);
             this.tboxCodigoBarra.TabIndex = 2;
             // 
             // tboxProduto
             // 
-            this.tboxProduto.Location = new System.Drawing.Point(395, 60);
+            this.tboxProduto.Location = new System.Drawing.Point(395, 55);
             this.tboxProduto.Name = "tboxProduto";
             this.tboxProduto.Size = new System.Drawing.Size(136, 31);
             this.tboxProduto.TabIndex = 3;
@@ -137,7 +142,7 @@
             // 
             this.dtpDataValidade.CustomFormat = "dd/MM/yyyy";
             this.dtpDataValidade.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDataValidade.Location = new System.Drawing.Point(527, 376);
+            this.dtpDataValidade.Location = new System.Drawing.Point(527, 374);
             this.dtpDataValidade.Name = "dtpDataValidade";
             this.dtpDataValidade.Size = new System.Drawing.Size(135, 31);
             this.dtpDataValidade.TabIndex = 8;
@@ -153,9 +158,11 @@
             // 
             // gboxProduto
             // 
-            this.gboxProduto.Controls.Add(this.tboxPctLucro);
+            this.gboxProduto.Controls.Add(this.tboxLucroTotal);
+            this.gboxProduto.Controls.Add(this.lblLucroTotal);
+            this.gboxProduto.Controls.Add(this.tboxLucroUnitario);
             this.gboxProduto.Controls.Add(this.tboxValorVenda);
-            this.gboxProduto.Controls.Add(this.lblPctLucro);
+            this.gboxProduto.Controls.Add(this.lblLucroUnitario);
             this.gboxProduto.Controls.Add(this.lblValorVenda);
             this.gboxProduto.Controls.Add(this.pictImagemProduto);
             this.gboxProduto.Controls.Add(this.tboxProduto);
@@ -167,33 +174,33 @@
             this.gboxProduto.TabStop = false;
             this.gboxProduto.Text = "Informações do produto";
             // 
-            // tboxPctLucro
+            // tboxLucroUnitario
             // 
-            this.tboxPctLucro.Location = new System.Drawing.Point(395, 134);
-            this.tboxPctLucro.Name = "tboxPctLucro";
-            this.tboxPctLucro.Size = new System.Drawing.Size(136, 31);
-            this.tboxPctLucro.TabIndex = 12;
+            this.tboxLucroUnitario.Location = new System.Drawing.Point(395, 135);
+            this.tboxLucroUnitario.Name = "tboxLucroUnitario";
+            this.tboxLucroUnitario.Size = new System.Drawing.Size(136, 31);
+            this.tboxLucroUnitario.TabIndex = 12;
             // 
             // tboxValorVenda
             // 
-            this.tboxValorVenda.Location = new System.Drawing.Point(395, 97);
+            this.tboxValorVenda.Location = new System.Drawing.Point(395, 95);
             this.tboxValorVenda.Name = "tboxValorVenda";
             this.tboxValorVenda.Size = new System.Drawing.Size(136, 31);
             this.tboxValorVenda.TabIndex = 11;
             // 
-            // lblPctLucro
+            // lblLucroUnitario
             // 
-            this.lblPctLucro.AutoSize = true;
-            this.lblPctLucro.Location = new System.Drawing.Point(313, 137);
-            this.lblPctLucro.Name = "lblPctLucro";
-            this.lblPctLucro.Size = new System.Drawing.Size(76, 23);
-            this.lblPctLucro.TabIndex = 10;
-            this.lblPctLucro.Text = "Lucro:";
+            this.lblLucroUnitario.AutoSize = true;
+            this.lblLucroUnitario.Location = new System.Drawing.Point(214, 143);
+            this.lblLucroUnitario.Name = "lblLucroUnitario";
+            this.lblLucroUnitario.Size = new System.Drawing.Size(175, 23);
+            this.lblLucroUnitario.TabIndex = 10;
+            this.lblLucroUnitario.Text = "Lucro Unitário:";
             // 
             // lblValorVenda
             // 
             this.lblValorVenda.AutoSize = true;
-            this.lblValorVenda.Location = new System.Drawing.Point(216, 100);
+            this.lblValorVenda.Location = new System.Drawing.Point(216, 103);
             this.lblValorVenda.Name = "lblValorVenda";
             this.lblValorVenda.Size = new System.Drawing.Size(175, 23);
             this.lblValorVenda.TabIndex = 9;
@@ -217,6 +224,22 @@
             this.btnPesquisarProduto.Text = "Pesquisar Produto";
             this.btnPesquisarProduto.UseVisualStyleBackColor = true;
             this.btnPesquisarProduto.Click += new System.EventHandler(this.btnPesquisarProduto_Click);
+            // 
+            // lblLucroTotal
+            // 
+            this.lblLucroTotal.AutoSize = true;
+            this.lblLucroTotal.Location = new System.Drawing.Point(247, 183);
+            this.lblLucroTotal.Name = "lblLucroTotal";
+            this.lblLucroTotal.Size = new System.Drawing.Size(142, 23);
+            this.lblLucroTotal.TabIndex = 13;
+            this.lblLucroTotal.Text = "Lucro Total:";
+            // 
+            // tboxLucroTotal
+            // 
+            this.tboxLucroTotal.Location = new System.Drawing.Point(395, 175);
+            this.tboxLucroTotal.Name = "tboxLucroTotal";
+            this.tboxLucroTotal.Size = new System.Drawing.Size(136, 31);
+            this.tboxLucroTotal.TabIndex = 14;
             // 
             // FrmRegistroEntrada
             // 
@@ -249,10 +272,12 @@
         private System.Windows.Forms.Label lblDataValidade;
         private System.Windows.Forms.GroupBox gboxProduto;
         private System.Windows.Forms.PictureBox pictImagemProduto;
-        private System.Windows.Forms.TextBox tboxPctLucro;
+        private System.Windows.Forms.TextBox tboxLucroUnitario;
         private System.Windows.Forms.TextBox tboxValorVenda;
-        private System.Windows.Forms.Label lblPctLucro;
+        private System.Windows.Forms.Label lblLucroUnitario;
         private System.Windows.Forms.Label lblValorVenda;
         private System.Windows.Forms.Button btnPesquisarProduto;
+        private System.Windows.Forms.TextBox tboxLucroTotal;
+        private System.Windows.Forms.Label lblLucroTotal;
     }
 }

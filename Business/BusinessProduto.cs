@@ -19,38 +19,34 @@ namespace Business
         {
             _conexao = conexao;
         }
-        
+
         public void Incluir(ModelProduto modelo)
         {
+            operacao = TipoOperacaoRegistro.Inserir;
             string msgErro = "";
-            if (ValidaeCampos(modelo, ref msgErro))
-            {
-                DALProduto DALObj = new DALProduto(_conexao);
-                DALObj.Incluir(modelo);
-            }
-            else
+            if (!ValidaCampos(modelo, ref msgErro))
             {
                 throw new Exception(msgErro);
             }
+            DALProduto DALObj = new DALProduto(_conexao);
+            DALObj.Incluir(modelo);
         }
 
         public void Alterar(ModelProduto modelo)
         {
             operacao = TipoOperacaoRegistro.Alterar;
             string msgErro = "";
-            if (ValidaeCampos(modelo, ref msgErro))
-            {
-                DALProduto DALObj = new DALProduto(_conexao);
-                DALObj.Alterar(modelo);
-            }
-            else
+            if (!ValidaCampos(modelo, ref msgErro))
             {
                 throw new Exception(msgErro);
             }
+            DALProduto DALObj = new DALProduto(_conexao);
+            DALObj.Alterar(modelo);
         }
-        
+
         public void Excluir(ModelProduto modelo)
         {
+            operacao = TipoOperacaoRegistro.Excluir;
             DALProduto DALObj = new DALProduto(_conexao);
             DALObj.Excluir(modelo);
         }
@@ -66,8 +62,8 @@ namespace Business
             DALProduto DALObj = new DALProduto(_conexao);
             return DALObj.CarregaModeloProduto(codigo);
         }
-        
-        private bool ValidaeCampos(ModelProduto modelo, ref string msgErro)
+
+        private bool ValidaCampos(ModelProduto modelo, ref string msgErro)
         {
             if (modelo.ProNome.Trim().Length == 0)
             {
@@ -101,7 +97,7 @@ namespace Business
             }
             if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.ProCod <= 0)
             {
-                throw new Exception("O código informado é inválido");
+                msgErro = "O código informado é inválido";
             }
             return true;
         }
