@@ -11,4 +11,4 @@ Utils/obj
 SQLBase/bin
 SQLBase/obj
 packages
-vs/
+.vs
