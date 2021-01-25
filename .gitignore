@@ -8,5 +8,7 @@ Modelo/bin
 Modelo/obj
 Utils/bin
 Utils/obj
+SQLBase/bin
+SQLBase/obj
 packages
-/.vs
+vs/
