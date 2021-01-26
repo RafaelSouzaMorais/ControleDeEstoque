@@ -73,9 +73,49 @@ namespace GUI.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_cancel_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cancel-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_cancelar_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-cancelar-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_checked_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-checked-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-delete-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_edit_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-edit-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +133,9 @@ namespace GUI.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_editar_641 {
+        internal static System.Drawing.Bitmap icons8_excluir_32 {
             get {
-                object obj = ResourceManager.GetObject("icons8-editar-641", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-excluir-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +163,29 @@ namespace GUI.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_ficheiro_de_imagem_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-ficheiro-de-imagem-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_ficheiro_de_imagem_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-ficheiro-de-imagem-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_image_file_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-image-file-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +216,36 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap icons8_pesquisar_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-pesquisar-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_plus_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-plus-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_search_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-search-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_trash_can_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-trash-can-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

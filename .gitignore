@@ -12,3 +12,5 @@ SQLBase/bin
 SQLBase/obj
 packages
 .vs
+/SQLBase/SQLBase.jfm
+/SQLBase/SQLBase.dbmdl

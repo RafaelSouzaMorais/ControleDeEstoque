@@ -134,36 +134,58 @@ namespace DAL
         public DataTable RecuperarPorNome(String valor)
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("Select * from pro_produto where pro_nome like '%" + valor + "%'", _conexao.ObjetoConexao);
-            da.Fill(tabela);
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("Select * from pro_produto where pro_nome like '%" + valor + "%'", _conexao.ObjetoConexao);
+                da.Fill(tabela);
+            }
+            catch /*(Exception erro)*/
+            {
+                throw new Exception("Erro ao recuperar Produto.");
+            }
+            finally
+            {
+                _conexao.Desconectar();
+            }
             return tabela;
         }
         public ModelProduto CarregaModeloProduto(int codigo)
         {
-            ModelProduto modelo = new ModelProduto();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = _conexao.ObjetoConexao;
-            cmd.CommandText = "Select * from pro_produto where pro_cod = @codigo";
-            cmd.Parameters.AddWithValue("@codigo", codigo);
-            _conexao.Conectar();
-            SqlDataReader registro = cmd.ExecuteReader();
-            if (registro.HasRows)
+            ModelProduto modelo = null;
+            try
             {
-                registro.Read();
-                modelo.ProCod = Convert.ToInt32(registro["pro_cod"]);
-                modelo.ProNome = Convert.ToString(registro["pro_nome"]);
-                modelo.ProDescricao = Convert.ToString(registro["pro_descricao"]);
-                modelo.ProValorVenda = Convert.ToDouble(registro["pro_valor_venda"]);
-                try
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conexao.ObjetoConexao;
+                cmd.CommandText = "Select * from pro_produto where pro_cod = @codigo";
+                cmd.Parameters.AddWithValue("@codigo", codigo);
+                _conexao.Conectar();
+                SqlDataReader registro = cmd.ExecuteReader();
+                if (registro.HasRows)
                 {
-                    modelo.ProFoto = (byte[])registro["pro_foto"];
+                    registro.Read();
+                    modelo = new ModelProduto();
+                    modelo.ProCod = Convert.ToInt32(registro["pro_cod"]);
+                    modelo.ProNome = Convert.ToString(registro["pro_nome"]);
+                    modelo.ProDescricao = Convert.ToString(registro["pro_descricao"]);
+                    modelo.ProValorVenda = Convert.ToDouble(registro["pro_valor_venda"]);
+                    try
+                    {
+                        modelo.ProFoto = (byte[])registro["pro_foto"];
+                    }
+                    catch { }
+                    modelo.ProCodUnidadeMedida = Convert.ToInt32(registro["pro_cod_und_medida"]);
+                    modelo.ProCodCategoria = Convert.ToInt32(registro["pro_cod_categoria"]);
+                    modelo.ProCodSubCategoria = Convert.ToInt32(registro["pro_cod_subcategoria"]);
                 }
-                catch { }
-                modelo.ProCodUnidadeMedida = Convert.ToInt32(registro["pro_cod_und_medida"]);
-                modelo.ProCodCategoria = Convert.ToInt32(registro["pro_cod_categoria"]);
-                modelo.ProCodSubCategoria = Convert.ToInt32(registro["pro_cod_subcategoria"]);
             }
-            _conexao.Desconectar();
+            catch /*(Exception erro)*/
+            {
+                throw new Exception("Erro ao recuperar Produto.");
+            }
+            finally
+            {
+                _conexao.Desconectar();
+            }
             return modelo;
         }
     }

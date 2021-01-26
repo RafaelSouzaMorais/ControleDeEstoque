@@ -17,7 +17,7 @@ namespace DAL
         {
             this._conexao = conexao;
         }
-        public void Incluir (ModelCategoria modelo)
+        public void Incluir(ModelCategoria modelo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
@@ -27,7 +27,7 @@ namespace DAL
             modelo.CatCod = Convert.ToInt32(cmd.ExecuteScalar());
             _conexao.Desconectar();
         }
-        public void Alterar (ModelCategoria modelo)
+        public void Alterar(ModelCategoria modelo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
@@ -38,7 +38,7 @@ namespace DAL
             cmd.ExecuteNonQuery();
             _conexao.Desconectar();
         }
-        public void Excluir (ModelCategoria modelo)
+        public void Excluir(ModelCategoria modelo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = _conexao.ObjetoConexao;
@@ -49,29 +49,57 @@ namespace DAL
             _conexao.Desconectar();
         }
 
-        public DataTable RecuperarPorNome (String valor)
+        public DataTable RecuperarPorNome(String valor)
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("Select * from cat_categoria where cat_nome like '%" + valor+"%'", _conexao.ObjetoConexao);
-            da.Fill(tabela);
+            try
+            {
+                
+                SqlDataAdapter da = new SqlDataAdapter(@"SELECT *
+                                                        FROM   cat_categoria
+                                                        WHERE  cat_nome LIKE 
+                                                            '%" + valor + "%'", _conexao.ObjetoConexao);
+                da.Fill(tabela);
+            }
+            catch /*(Exception erro)*/
+            {
+                throw new Exception("Erro ao recuperar Categoria.");
+            }
+            finally
+            {
+                _conexao.Desconectar();
+            }
             return tabela;
         }
-        public ModelCategoria CarregaModeloCategoria (int codigo)
+        public ModelCategoria CarregaModeloCategoria(int codigo)
         {
-            ModelCategoria modelo = new ModelCategoria();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = _conexao.ObjetoConexao;
-            cmd.CommandText = "Select * from cat_categoria where cat_cod = @codigo";
-            cmd.Parameters.AddWithValue("@codigo", codigo);
-            _conexao.Conectar();
-            SqlDataReader registro = cmd.ExecuteReader();
-            if(registro.HasRows)
+            ModelCategoria modelo = null;
+            try
             {
-                registro.Read();
-                modelo.CatCod = Convert.ToInt32(registro["cat_cod"]);
-                modelo.CatNome = Convert.ToString(registro["cat_nome"]);
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conexao.ObjetoConexao;
+                cmd.CommandText = @"SELECT *
+                                    FROM cat_categoria
+                                    WHERE cat_cod = @codigo ";
+                cmd.Parameters.AddWithValue("@codigo", codigo);
+                _conexao.Conectar();
+                SqlDataReader registro = cmd.ExecuteReader();
+                if (registro.HasRows)
+                {
+                    registro.Read();
+                    modelo = new ModelCategoria();
+                    modelo.CatCod = Convert.ToInt32(registro["cat_cod"]);
+                    modelo.CatNome = Convert.ToString(registro["cat_nome"]);
+                }
             }
-            _conexao.Desconectar();
+            catch /*(Exception erro)*/
+            {
+                throw new Exception("Erro ao recuperar Categoria.");
+            }
+            finally
+            {
+                _conexao.Desconectar();
+            }
             return modelo;
         }
     }

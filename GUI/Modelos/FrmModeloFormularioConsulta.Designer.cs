@@ -48,7 +48,7 @@
             // 
             // btnRecuperar
             // 
-            this.btnRecuperar.Image = global::GUI.Properties.Resources.icons8_pesquisar_64;
+            this.btnRecuperar.Image = global::GUI.Properties.Resources.icons8_search_64;
             this.btnRecuperar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnRecuperar.Location = new System.Drawing.Point(677, 3);
             this.btnRecuperar.Name = "btnRecuperar";

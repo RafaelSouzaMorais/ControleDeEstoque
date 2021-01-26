@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProduto));
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblDescricao = new System.Windows.Forms.Label();
@@ -83,20 +82,32 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Image = global::GUI.Properties.Resources.icons8_cancel_64;
             this.btnCancelar.Location = new System.Drawing.Point(625, 2);
             // 
             // btnSalvar
             // 
+            this.btnSalvar.Image = global::GUI.Properties.Resources.icons8_plus_64;
             this.btnSalvar.Location = new System.Drawing.Point(544, 2);
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
             // 
+            this.btnExcluir.Image = global::GUI.Properties.Resources.icons8_delete_64;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnRecuperar
             // 
+            this.btnRecuperar.Image = global::GUI.Properties.Resources.icons8_search_64;
             this.btnRecuperar.Click += new System.EventHandler(this.btnRecuperar_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Image = global::GUI.Properties.Resources.icons8_edit_64;
+            // 
+            // btnInserir
+            // 
+            this.btnInserir.Image = global::GUI.Properties.Resources.icons8_plus_64;
             // 
             // lblCodigo
             // 
@@ -260,7 +271,7 @@
             // btnImportaImagem
             // 
             this.btnImportaImagem.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportaImagem.Image = ((System.Drawing.Image)(resources.GetObject("btnImportaImagem.Image")));
+            this.btnImportaImagem.Image = global::GUI.Properties.Resources.icons8_image_file_32;
             this.btnImportaImagem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnImportaImagem.Location = new System.Drawing.Point(435, 41);
             this.btnImportaImagem.Name = "btnImportaImagem";
@@ -274,7 +285,7 @@
             // btnExcluiImagem
             // 
             this.btnExcluiImagem.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluiImagem.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluiImagem.Image")));
+            this.btnExcluiImagem.Image = global::GUI.Properties.Resources.icons8_trash_can_32;
             this.btnExcluiImagem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnExcluiImagem.Location = new System.Drawing.Point(435, 112);
             this.btnExcluiImagem.Name = "btnExcluiImagem";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmModeloFormularioCadastro));
             this.pnDados = new System.Windows.Forms.Panel();
             this.pnBotões = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
             // 
             // pnDados
             // 
-            //this.pnDados.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnDados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnDados.Location = new System.Drawing.Point(12, 12);
             this.pnDados.Name = "pnDados";
@@ -64,7 +64,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Image = global::GUI.Properties.Resources.icons8_cancelar_64;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCancelar.Location = new System.Drawing.Point(682, 2);
             this.btnCancelar.Name = "btnCancelar";
@@ -77,7 +77,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Image = global::GUI.Properties.Resources.icons8_ok_64;
+            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSalvar.Location = new System.Drawing.Point(601, 2);
             this.btnSalvar.Name = "btnSalvar";
@@ -90,7 +90,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Image = global::GUI.Properties.Resources.icons8_excluir_64;
+            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnExcluir.Location = new System.Drawing.Point(246, 2);
             this.btnExcluir.Name = "btnExcluir";
@@ -103,7 +103,7 @@
             // 
             // btnRecuperar
             // 
-            this.btnRecuperar.Image = global::GUI.Properties.Resources.icons8_pesquisar_64;
+            this.btnRecuperar.Image = ((System.Drawing.Image)(resources.GetObject("btnRecuperar.Image")));
             this.btnRecuperar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnRecuperar.Location = new System.Drawing.Point(165, 2);
             this.btnRecuperar.Name = "btnRecuperar";
@@ -116,7 +116,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Image = global::GUI.Properties.Resources.icons8_editar_64;
+            this.btnAlterar.Image = ((System.Drawing.Image)(resources.GetObject("btnAlterar.Image")));
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAlterar.Location = new System.Drawing.Point(84, 2);
             this.btnAlterar.Name = "btnAlterar";
@@ -129,7 +129,7 @@
             // 
             // btnInserir
             // 
-            this.btnInserir.Image = global::GUI.Properties.Resources.icons8_mais_64;
+            this.btnInserir.Image = ((System.Drawing.Image)(resources.GetObject("btnInserir.Image")));
             this.btnInserir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnInserir.Location = new System.Drawing.Point(3, 2);
             this.btnInserir.Name = "btnInserir";
@@ -147,6 +147,7 @@
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.pnBotões);
             this.Controls.Add(this.pnDados);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmModeloFormularioCadastro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modelo de Formulário de Cadastro";

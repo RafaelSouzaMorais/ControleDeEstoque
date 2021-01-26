@@ -91,7 +91,7 @@ namespace Business
 
             if (operacao.Equals(TipoOperacaoRegistro.Alterar) && modelo.UmedCod <= 0)
             {
-                msgErro = "O código informado é inválido";
+                msgErro = "O código de Unidade de Medida informado é inválido";
             }
 
             return true;

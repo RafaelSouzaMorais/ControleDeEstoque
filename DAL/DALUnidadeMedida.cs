@@ -117,13 +117,13 @@ namespace DAL
             }
             catch (Exception erro)
             {
-                throw new Exception("Erro na recuperação de Unidade de Medida: " + erro.Message);
+                throw new Exception("Erro ao recuperar Unidade de Medida: " + erro.Message);
             }
             return tabela;
         }
         public ModelUnidadeMedida CarregaModeloUnidadeMedida(int codigo)
         {
-            ModelUnidadeMedida modelo = new ModelUnidadeMedida();
+            ModelUnidadeMedida modelo = null;
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -135,13 +135,14 @@ namespace DAL
                 if (registro.HasRows)
                 {
                     registro.Read();
+                    modelo = new ModelUnidadeMedida();
                     modelo.UmedCod = Convert.ToInt32(registro["umed_cod"]);
                     modelo.UmedNome = Convert.ToString(registro["umed_nome"]);
                 }
             }
-            catch (Exception erro)
+            catch /*(Exception erro)*/
             {
-                throw new Exception("Erro no carregamento do modelo de Unidade de Medida: " + erro.Message);
+                throw new Exception("Erro ao recuperar Unidade de Medida.");
             }
             finally
             {

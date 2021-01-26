@@ -43,10 +43,12 @@
   <ItemGroup>
     <Compile Include="BusinessCategoria.cs" />
     <Compile Include="BusinessEstoque.cs" />
+    <Compile Include="BusinessItemVenda.cs" />
     <Compile Include="BusinessProduto.cs" />
     <Compile Include="BusinessRegistroEntrada.cs" />
     <Compile Include="BusinessSubCategoria.cs" />
     <Compile Include="BusinessUnidadeMedida.cs" />
+    <Compile Include="BusinessVenda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

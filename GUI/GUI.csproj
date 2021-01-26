@@ -233,7 +233,17 @@
     <None Include="Resources\icons8-ficheiro-de-imagem-64.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\icons8-editar-64.gif" />
+    <None Include="Resources\icons8-trash-can-32.png" />
+    <None Include="Resources\icons8-image-file-32.png" />
+    <None Include="Resources\icons8-ficheiro-de-imagem-32.png" />
+    <None Include="Resources\icons8-search-641.png" />
+    <None Include="Resources\icons8-plus-641.png" />
+    <None Include="Resources\icone.bmp" />
+    <None Include="Resources\icons8-checked-641.png" />
+    <None Include="Resources\icons8-cancel-641.png" />
+    <None Include="Resources\icons8-delete-641.png" />
+    <None Include="Resources\icons8-edit-641.png" />
+    <None Include="Resources\icons8-excluir-32.png" />
     <Content Include="Resources\icons8-excluir-lixeira-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -93,9 +93,9 @@ namespace DAL
                                                             from scat_subcategoria inner join cat_categoria on scat_cod_categoria = cat_cod where scat_nome like '%" + valor + "%'", _conexao.ObjetoConexao);
                 da.Fill(tabela);
             }
-            catch (Exception erro)
+            catch /*(Exception erro)*/
             {
-                throw new Exception("Erro na recuperação de Subcategoria: " + erro.Message);
+                throw new Exception("Erro ao recuperar Subcategoria.");
             }
             return tabela;
         }
@@ -108,15 +108,15 @@ namespace DAL
                                                             from scat_subcategoria where scat_cod_categoria =  "+valor, _conexao.ObjetoConexao);
                 da.Fill(tabela);
             }
-            catch (Exception erro)
+            catch /*(Exception erro)*/
             {
-                throw new Exception("Erro na recuperação de Subcategoria: " + erro.Message);
+                throw new Exception("Erro ao recuperar Subcategoria.");
             }
             return tabela;
         }
         public ModelSubCategoria CarregaModeloSubCategoria(int codigo)
         {
-            ModelSubCategoria modelo = new ModelSubCategoria();
+            ModelSubCategoria modelo = null;
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -128,14 +128,15 @@ namespace DAL
                 if (registro.HasRows)
                 {
                     registro.Read();
+                    modelo = new ModelSubCategoria();
                     modelo.ScatCod = Convert.ToInt32(registro["scat_cod"]);
                     modelo.ScatNome = Convert.ToString(registro["scat_nome"]);
                     modelo.ScatCodCategoria = Convert.ToInt32(registro["scat_cod_categoria"]);
                 }
             }
-            catch (Exception erro)
+            catch /*(Exception erro)*/
             {
-                throw new Exception("Erro no carregamento do modelo de Subcategoria: " + erro.Message);
+                throw new Exception("Erro ao recuperar Subcategoria.");
             }
             finally
             {

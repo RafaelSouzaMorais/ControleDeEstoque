@@ -117,40 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnExcluiImagem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAwtJREFUWEft
-        l1tPE0EYhush0Xv9A/4B/QP+Ab033nqhJtotLcVQ4yHZxMQLEzCisTvblLLb0gNQCHDRQi2nFrDFyhlJ
-        UBEictYoMRYpGecjE9ytM+2W1AQT3+RN29nd93v6zc4eTP+cXIJ6RhIapiVBwXmegm10t78jURSPkuID
-        TqGhmg7tSzIrDtgG+9Ch8guZVZvTrAyyisCYU1D6SCesdOhgQnb/YxKS07S2XM4hq7eWluELdgx0ZHAw
-        Ml5W+9szWLJ4d2gZvoAWDlCc8T3Dd9kR5I4V264dg2xahq/DAJCDdsEB5bThKYATBSCAtszOyTZvDS1T
-        WE6Les1X073ellzA5bDyKLKGzMpVGl9cklm9qIhtH9Kzm1jrvtFV3JNZ4XiZWRzsvh9+LwvKBRpfXGSu
-        zrmrg8v5AP1jfID4qxVmcbB8K7D0/IZylsYXF7ruP03Oha18gIHxQgD8DqAK77dnZuUUjS8ubMJHkEXJ
-        pqbWdQCJiTVmcfALHkD/PDn7lSxk0nhjkqzqYiK1qANIFgCIcQDC0VmyAtR3NNa4pArvcE/PnA5gcHKd
-        WRwcG/nEBGhqndglHUjQWOMiB4WiHZM6gKGpDWZxMK8DQf/INrkGBGmscRGAmk7/yK4eoPQONLoS3yGL
-        xhoXecCwh+WBn1qA4Wl+B7rTbADvk9hXyKKxxkXadjlY25XVArycKQDA6UDDw87PkEVjjQvdVM+rD9p/
-        aAHSbzaZxcHd6SUmgPte+Atk0VjjggdMtyO0rQMg7s2wL0ZRzhTIVYGtAz2s1lnqTiCrugv/Wgfw+s/i
-        4K4UowOJBUyW847niuckjS1Nsr0xOzS6rAPg3ZCijClojc9hiVzSaVzpqneEVvuT8zoA3g0pyuhAc+c0
-        lit9czSudMk2XywWndkr7Lnbkv+Ase/6Oy04kvqIXbeb937DJwAEQhmMbGqMxpUueA8gK2FjaOz3NCTH
-        2feDSF4HwvG32CO2wRI8+HuCKPYeR3avC1U27mj/sREjm28bCcrTpktNx2jcfx1GmUy/AC1LiQigtLTw
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btnImportaImagem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAm1JREFUWEft
-        l91v0lAYh7nRP9Ub8WOLYxrNtgv1QoE2OjNB44qwsSgbMObcBpgNiAHijZ93wnQWLzQxcTFTSvLa36EH
-        OnYYPe0ud5Inp2k57/N7Dy2kvtMxaszMPDt7L5CMqmNPD0L+eXJD+IJmKH7ttlXS+YBcubKQX1TTBgrl
-        G/+ElPfaVGsZ9KrZZsdvvncYOMb1zU+/EaJjlXU2IuciZ5TxxGZCWWl3frxknQyKASR1U14ckFe+Gux6
-        waSqG2y9VXr0GJTTrw1hAKdynHMcQCQXBZCRSwVQA4tRfOedn10xONDXSbkUcy2XCzAWO3K3Kxc1Si2U
-        XMuB4wD4IO90ELdy4DmAFznwFMCrHLgOkNtuUmQqSQ9Ncju7vYIycuAqALqFfL/xiPY/P6bIdJIVk5UD
-        6QB829G5PYAbOZAKYP/Ose0QgxfbX4TyQq1F0TtrVKy3Dkk5qCUV4Lg/lkIT8n7xQlUnJRCnaW2JzcWa
-        3rsGeC2pAMPu9kxpj6J3+51y+bXccxqvp9kctoXgu4i1UgFEnUOuBhJ0P5U25zhlMu8OyTksxESctqrf
-        WOdYKx1gmPxBZY3mdvMsROiydkTOubraDZF9rbsP0Nv2HVM+2ZdjDk7Ehso5k+spCpYqtNX4Kx+Ay7Nl
-        S17uymcdyu0E39blA2DB7I0UW+QV9XpSPoDsj4z9bh+GVAD7cz4K/pyLpHakAohEIpx0zpEOMDe1zObs
-        6gfG4LmMCeS4VyBILr9n4Fh07kQDQL60MlzmKQDeYqqNP0wkQmbbORsf2YtJ21IcP8Ln528p5lsMEp8Y
-        ZlMh/5ObluJ02IbP9x/y4B823o2hEQAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

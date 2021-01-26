@@ -15,15 +15,9 @@ namespace Model
             this.ProCod = 0;
             this.ProNome = "";
             this.ProDescricao = "";
-            //this.ProValorPago = 0;
-            //this.ProValorVenda = 0;
-            //this.ProQtde = 0;
             this.ProCodUnidadeMedida = 0;
             this.ProCodCategoria = 0;
             this.ProCodSubCategoria = 0;
-            //this.ProDataValidade = DateTime.Now;
-            //this.ProCodigoBarra = "";
-
         }
 
         public ModelProduto(int proCod, String proNome, String proDescricao,
