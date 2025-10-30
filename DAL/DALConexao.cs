@@ -17,6 +17,10 @@ namespace DAL
 
         public DALConexao(String dadosConexao)
         {
+            if (string.IsNullOrWhiteSpace(dadosConexao))
+            {
+                throw new ArgumentException("String de conexão inválida.", nameof(dadosConexao));
+            }
             this._conexao = new SqlConnection(dadosConexao);
             this.StringConexao = dadosConexao;
         }
@@ -28,7 +32,10 @@ namespace DAL
 
         public void Desconectar()
         {
-            this._conexao.Close();
+            if (this._conexao.State != System.Data.ConnectionState.Closed)
+            {
+                this._conexao.Close();
+            }
         }
 
         public bool TesteConexao()
@@ -40,6 +47,14 @@ namespace DAL
                 return true;
             }
             catch (SqlException)
+            {
+                return false;
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
+            catch (ArgumentException)
             {
                 return false;
             }

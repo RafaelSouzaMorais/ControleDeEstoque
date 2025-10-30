@@ -53,15 +53,30 @@ namespace GUI
             catch
             {
                 MessageBox.Show("Erro ao carregarr arquivo de configuração do Banco de Dados.");
+                // Mantém stringDeConexao nula/vazia para validação posterior
             }
         }
 
         private void TesteConexao()
         {
-            DALConexao dalConexao = new DALConexao(stringDeConexao);
-            if(!dalConexao.TesteConexao())
+            // Evita quebra ao iniciar quando não existe configuração
+            if (string.IsNullOrWhiteSpace(stringDeConexao))
             {
-                MessageBox.Show("Erro de acesso ao Banco de Dados.");
+                MessageBox.Show("Configuração do Banco de Dados não encontrada ou inválida. Abra Configuração > Banco de Dados para configurar.");
+                return;
+            }
+
+            try
+            {
+                DALConexao dalConexao = new DALConexao(stringDeConexao);
+                if (!dalConexao.TesteConexao())
+                {
+                    MessageBox.Show("Erro de acesso ao Banco de Dados. Verifique as configurações em Configuração > Banco de Dados.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao inicializar conexão com o Banco de Dados: {ex.Message}");
             }
         }
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
